@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+
+format:
+  revealjs:
+    mathjax: true
+    theme: simple
+    css: theme/custom.css
+    logo: figures/argonne-logo.png
+    width: 1440
+    height: 810
+    margin: 0.1
+    minScale: 0.2
+    maxScale: 4
+    auto-animate: true
+    slide-number: true
+    incremental: false
+    toc: false
+    code-fold: false
+    code-overflow: scroll
+    self-contained: true
+    progress: true
+    transition: fade
+    navigation-mode: vertical
+    highlight-style: github
+    code-block-background: "#f7f9fc"
+    code-block-border-left: "#1a6f8f"
+
+website:
+  title: "CISNET Talk"
+  navbar:
+    left:
+      - text: "Slides"
+        href: index.html

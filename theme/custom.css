@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap');
+
+/* Persistent logo on every slide, including the title slide. */
+.reveal .slide-logo {
+  display: block !important;
+  position: fixed;
+  right: 24px !important;
+  bottom: 20px !important;
+  width: 180px !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  z-index: 10;
+}
+
+/* Keep slide numbers clear of the logo. */
+.reveal .slide-number {
+  right: 24px !important;
+  bottom: 80px !important;
+}
+
+/* ---------------------------
+   CUSTOM REVEALJS THEME START
+---------------------------- */
+
+.reveal {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Helvetica, Arial, sans-serif !important;
+}
+
+/* ---------------------------
+   TITLE SLIDE CUSTOMIZATION
+---------------------------- */
+
+.reveal #title-slide .title {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  background: rgba(99, 171, 197, 0.28);
+  border: 4px solid rgba(26, 112, 143, 0.69);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  font-size: 2em !important;
+  color: #0d485eff !important;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.reveal #title-slide .quarto-title-author-name {
+  font-size: 1.15em !important;
+  color: #082b37ff !important;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+.reveal #title-slide .quarto-title-affiliation {
+  font-size: 1.05em !important;
+  color: #d08011ff !important;
+  font-weight: 500;
+  margin-top: 0.5em;
+}
+
+/* ---------------------------
+   SLIDE HEADINGS
+---------------------------- */
+
+.reveal h1,
+.reveal h2 {
+  color: #1a6f8f !important;
+  font-weight: 500;
+  margin-bottom: 0.4em;
+}
+
+section[data-state="title-slide"] h1 {
+  color: #0e3d4d !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: "Lato", sans-serif !important;
+}
+
+/* Full-width slide title bar */
+.reveal section h2 {
+  display: block;
+  width: 100%;
+  background: rgba(240, 245, 250, 0.9);
+  padding: 8px 20px;
+  border-radius: 12px;
+  margin: -10px 0 25px 0;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-left: 8px solid #1a6f8f;
+  font-weight: 700;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  padding-top: 0px;
+  padding-bottom: 8px;
+}
+
+/* ---------------------------
+   BULLET STYLING
+---------------------------- */
+
+.reveal ul {
+  list-style: none !important;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* First-level: hollow rounded square */
+.reveal ul > li {
+  position: relative;
+  margin-bottom: 0.35em;
+  padding-left: 1.4em;
+}
+
+.reveal ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.5em;
+  height: 0.5em;
+  background: transparent;
+  border: 5px solid #20adeeff;
+  border-radius: 8px;
+}
+
+/* Second-level: dash */
+.reveal ul ul {
+  margin-top: 0.25em;
+  padding-left: 0.2em !important;
+}
+
+.reveal ul ul > li {
+  padding-left: 1.1em;
+}
+
+.reveal ul ul > li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  color: #1a6f8f;
+  font-weight: 600;
+  font-size: 1.1em;
+  background: none !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* ---------------------------
+   COLUMN IMAGE / HEADING OVERRIDES
+---------------------------- */
+
+.reveal .column img {
+  display: block;
+  margin: 0 auto;
+  max-width: none !important;
+}
+
+.reveal .column h1,
+.reveal .column h2,
+.reveal .column h3,
+.reveal .column h4,
+.reveal .column h5 {
+  text-align: center;
+}
+
+/* ---------------------------
+   COLUMN LAYOUTS
+   Quarto sets div.column { display: inline-block } and
+   div.columns { display: initial }. We override with flex
+   so gap/padding approach works reliably.
+   width="X%" on .column becomes flex-basis; box-sizing:border-box
+   keeps padding inside that width so totals don't overflow.
+---------------------------- */
+
+.reveal .columns {
+  display: flex !important;
+  align-items: flex-start;
+}
+
+.reveal .columns > .column {
+  display: block !important;   /* undo inline-block */
+  flex-shrink: 1;
+  flex-grow: 0;
+  box-sizing: border-box;
+}
+
+/* Separator gap on every non-first column */
+.reveal .columns > .column + .column {
+  padding-left: 3rem;
+  border-left: 2px solid rgba(26, 111, 143, 0.15);
+}
+
+/* Named helpers for explicit flex-basis overrides */
+.reveal .columns.two-wide-narrow-panel > .column:nth-child(1) {
+  flex: 0 0 58%;
+}
+.reveal .columns.two-wide-narrow-panel > .column:nth-child(2) {
+  flex: 0 0 38%;
+}
+
+.reveal .columns.three-equal-panel > .column {
+  flex: 1 1 0;
+}
+
+/* ---------------------------
+   HIGHLIGHT BOX
+---------------------------- */
+
+.reveal .highlight-box {
+  border: 3px solid #1a6f8f;
+  background: rgba(26, 111, 143, 0.08);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.reveal .highlight-box ul {
+  padding-left: 1.2em !important;
+}
+
+/* ---------------------------
+   FRAGMENT ANIMATIONS
+---------------------------- */
+
+.reveal .fragment.zoom-step {
+  opacity: 0.35 !important;
+  transform: scale(0.95) !important;
+  transform-origin: center center;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal .fragment.zoom-step.visible {
+  opacity: 0.35 !important;
+  transform: scale(0.95) !important;
+}
+
+.reveal .fragment.zoom-step.current-fragment {
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+  z-index: 2;
+}
+
+/* ---------------------------
+   REFERENCES SLIDE
+---------------------------- */
+
+.reveal section#references {
+  padding-top: 24px !important;
+}
+
+.reveal section#references h2 {
+  margin-top: 8px !important;
+}
+
+/* ---------------------------
+   QR CODE ON TITLE SLIDE
+---------------------------- */
+
+#title-slide .qr-code {
+  position: absolute;
+  right: 2%;
+  bottom: 3%;
+  width: 120px;
+  z-index: 9999;
+}
+
+/* ---------------------------
+   CALLOUT
+---------------------------- */
+
+.callout {
+  font-size: 1.2em !important;
+  color: #e05316;
+}
+
+/* ---------------------------
+   COLOR HIGHLIGHT UTILITIES
+   Usage in qmd: [text]{.hl-blue}
+---------------------------- */
+
+/* Teal-blue: method names, surrogate terms (CRNGP, CRN, GP) */
+.reveal .hl-blue {
+  color: #1a6f8f;
+  font-weight: 600;
+}
+
+/* Amber: key concepts, definitions (trajectory, seed) */
+.reveal .hl-amber {
+  color: #b86f00;
+  font-weight: 600;
+}
+
+/* Green: positive results, advantages */
+.reveal .hl-green {
+  color: #2a7a45;
+  font-weight: 600;
+}
+
+/* Orange-red: numbers, emphasis, aCRN branding */
+.reveal .hl-orange {
+  color: #e05316;
+  font-weight: 600;
+}
+
+/* Muted red: gaps, limitations, failing methods */
+.reveal .hl-red {
+  color: #b83232;
+  font-weight: 600;
+}
+
+/* Purple: algorithm steps, structural terms */
+.reveal .hl-purple {
+  color: #6b3fa0;
+  font-weight: 600;
+}
