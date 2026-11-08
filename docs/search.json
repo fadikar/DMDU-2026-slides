@@ -7,6 +7,20 @@
     "text": "Our Team\n\n\n\n  \n  \n    \n\n      \n        \n        \n        \n        \n        \n      \n\n      \n        Modeling, Simulation & High Performance Computing\n        Argonne National Laboratory\n      \n\n      \n        \n          \n          Jonathan Ozik\n          Team Lead\n        \n      \n\n      \n        \n          \n          Nicholson Collier\n          Software Engineer\n        \n      \n\n      \n        \n          \n          David O'Gara\n          Computational Statistician\n        \n      \n\n      \n        \n          \n          Arindam Fadikar\n          Computational Statistician\n        \n      \n\n      \n        \n          \n          Mickael Binois\n          Outside Collaborator\n          Inria"
   },
   {
+    "objectID": "index.html#our-setting",
+    "href": "index.html#our-setting",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Our Setting",
+    "text": "Our Setting\n\nSimulation-based inference supports policy analysis under uncertainty.\n\n\n\nCalibration shapes the futures we carry into policy analysis.\n\n\nIcon sources: world, chart-dots, desktop-analytics, adjustments, route — Tabler Icons, Paweł Kuna; MIT license. Adapted colors and size.\n\n\nOur setting is simulation-based inference and policy analysis. We use observations to constrain plausible model behavior, then explore how policies perform across uncertain futures. Calibration is one part of that workflow: future scenarios and model structure also matter. The question for this talk is how the calibration search affects which data-consistent behaviors we carry forward. The next slide illustrates why this matters for future uncertainty."
+  },
+  {
+    "objectID": "index.html#calibration",
+    "href": "index.html#calibration",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Calibration",
+    "text": "Calibration\n\nOur focus: constrain simulation behavior using observations.\n\n\n\nCalibration shapes the futures we carry into policy analysis.\n\n\nIcon sources: world, chart-dots, desktop-analytics, adjustments, route — Tabler Icons, Paweł Kuna; MIT license. Adapted colors and size.\n\n\nCalibration is the focus of this talk. Observations and simulated behavior meet here, constraining which model realizations we carry forward into policy analysis. The other parts of the workflow remain important; the faded blocks emphasize the scope of this work."
+  },
+  {
     "objectID": "index.html#calibration-shapes-decision-uncertainty",
     "href": "index.html#calibration-shapes-decision-uncertainty",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
@@ -14,60 +28,53 @@
     "text": "Calibration Shapes Decision Uncertainty\n\n\nCalibrate to observations → Propagate uncertainty → Stress-test decisions\n\n\nA stochastic model can reproduce the observed history in several ways. Compatible parameter values and stochastic realizations can produce different future outcomes under the same scenario. Calibration determines which possibilities we carry forward, and how we represent them; it does not remove uncertainty about future conditions or model structure. If we retain only a best fit or an average trajectory, we can miss threshold crossings that matter for decisions. For DMDU, the connection is to stress-testing actions across plausible futures. The figure is conceptual, not a forecast or a calibrated probability distribution."
   },
   {
-    "objectID": "index.html#stochastic-simulation-same-input-different-outputs",
-    "href": "index.html#stochastic-simulation-same-input-different-outputs",
+    "objectID": "index.html#stochastic-simulation",
+    "href": "index.html#stochastic-simulation",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Stochastic Simulation: Same Input, Different Outputs",
-    "text": "Stochastic Simulation: Same Input, Different Outputs\n\n\n\\(y(t) = f(x, r; t)\\) — Fixed input \\(x\\), different random seeds \\(r\\)\n\n\nA stochastic simulator contains random events. Holding the model inputs x fixed, independent replicates can produce different time series. Here r denotes the random seed identifying a realization; a replicate is one run at that input. With x and the seed fixed, the simulator is reproducible. The curves are conceptual realizations, not fitted data."
+    "section": "Stochastic Simulation",
+    "text": "Stochastic Simulation\n\n\n\\(y(t) = f(x, r; t)\\) — Fixed input \\(x\\), different random seeds \\(r\\)\n\n\nA stochastic simulator contains random events. Holding the model inputs x fixed, independent replicates can produce different time series. Here r denotes the random seed identifying a realization; a replicate is one run at that input. With x and the seed fixed, the simulator is reproducible. The curves are conceptual realizations, not fitted data."
   },
   {
-    "objectID": "index.html#missed-historical-matches-can-understate-future-uncertainty",
-    "href": "index.html#missed-historical-matches-can-understate-future-uncertainty",
+    "objectID": "index.html#missed-matches",
+    "href": "index.html#missed-matches",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Missed Historical Matches Can Understate Future Uncertainty",
-    "text": "Missed Historical Matches Can Understate Future Uncertainty\n\n\nMiss relevant \\((x, r)\\) matches → Miss plausible futures\n\n\nReturn to the earlier illustration. Every displayed input–replicate pair fits within the historical observation error bars. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual."
+    "section": "Missed Matches",
+    "text": "Missed Matches\n\n\nMiss relevant \\((x, r)\\) matches → Miss plausible futures\n\n\nReturn to the earlier illustration. Every displayed input–replicate pair fits within the historical observation error bars. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual."
   },
   {
-    "objectID": "index.html#find-the-matches-we-would-otherwise-miss",
-    "href": "index.html#find-the-matches-we-would-otherwise-miss",
+    "objectID": "index.html#finding-matches",
+    "href": "index.html#finding-matches",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Find the Matches We Would Otherwise Miss",
-    "text": "Find the Matches We Would Otherwise Miss\n\n\nSearch over inputs and replicates\n\\[y(t) = f(x, r; t)\\]\nKeep pairs whose histories match the observations:\n\\[\\mathcal{A}_{\\delta} = \\left\\{(x,r): d\\!\\left(f(x,r), y_{\\mathrm{obs}}\\right) \\leq \\delta\\right\\}\\]\nMany compatible paths, rather than one best fit.\n\nThe computational challenge\n\nMany inputs \\(x\\)\nMany replicates \\(r\\)\nLimited simulation budget\n\n\nWhich \\((x,r)\\) should we run next?\n\n\n\nDiscover historical matches → Carry their futures forward\n\n\nThe previous slide showed the consequence of missing compatible runs. This changes the computational target: search for a collection of input–replicate pairs whose simulated histories are consistent with the observations, rather than only a parameter vector with a good mean response. Here x denotes model parameters and r identifies a random realization. The discrepancy d compares the historical portion only; its definition and tolerance delta should reflect observational uncertainty and the intended calibration criterion. Subsequent slides use theta for the parameter vector x. With expensive simulations, exhaustive search is infeasible, so the next-run choice matters. This motivates trajectory discovery under a finite budget. The accepted collection supports coverage of compatible futures; it is not automatically a posterior sample or a probability-weighted forecast."
+    "section": "Finding Matches",
+    "text": "Finding Matches\n\n\n\nSearch over inputs and replicates\n\\[y(t) = f(x, r; t)\\]\nKeep pairs whose histories match the observations:\n\\[\\mathcal{A}_{\\delta} = \\left\\{(x,r): d\\!\\left(f(x,r), y_{\\mathrm{obs}}\\right) \\leq \\delta\\right\\}\\]\nMany compatible paths, rather than one best fit.\n\nThe computational challenge\n\nMany inputs \\(x\\)\nMany replicates \\(r\\)\nLimited simulation budget\n\n\nWhich \\((x,r)\\) should we run next?\n\n\n\n\n\nThe previous slide showed the consequence of missing compatible runs. This changes the computational target: search for a collection of input–replicate pairs whose simulated histories are consistent with the observations, rather than only a parameter vector with a good mean response. Here x denotes model parameters and r identifies a random realization. The discrepancy d compares the historical portion only; its definition and tolerance delta should reflect observational uncertainty and the intended calibration criterion. With expensive simulations, exhaustive search is infeasible, so the next-run choice matters. This motivates trajectory discovery under a finite budget. The accepted collection supports coverage of compatible futures; it is not automatically a posterior sample or a probability-weighted forecast."
   },
   {
     "objectID": "index.html#what-existing-methods-lack",
     "href": "index.html#what-existing-methods-lack",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
     "section": "What Existing Methods Lack",
-    "text": "What Existing Methods Lack\n\n\nApproximate Bayesian Computation\n\nSimulate, compare to data via summary statistics\nAccept/reject based on distance threshold\nGap: summary statistics discard trajectory-level information\n\n\nEmulation + Calibration\n\nBuild surrogate of \\(\\mathbb{E}[f(\\theta)]\\) - non-replicate aware\nOptimize over \\(\\theta\\)\nGap: averaging over seeds before emulation loses the stochastic structure\n\n\n\n\n\nAll existing methods aggregate over randomness. The best-average parameters need not produce any data-consistent trajectory.\n\n\n\nThe consequence: with a fixed compute budget, mean-based surrogates return a handful of trajectories that happen to be close to data — they are not searching for trajectories explicitly."
+    "text": "What Existing Methods Lack\n\n\n\nApproximate Bayesian Computation\n\nSimulate, compare to data via summary statistics\nAccept/reject based on distance threshold\nPotential gap: compressed summaries can discard trajectory-level information\n\n\nMean-based Emulation + Calibration\n\nBuild a surrogate of \\(\\mathbb{E}[f(x,r)]\\)\nOptimize over \\(x\\)\nGap: averaging before emulation loses replicate-specific behavior\n\n\n\n\n\nMean-based methods aggregate over randomness. A good mean fit does not identify data-consistent realizations.\n\n\n\nThe consequence: the search targets the mean response, rather than explicitly discovering compatible \\((x,r)\\) pairs."
   },
   {
-    "objectID": "index.html#trajectory-oriented-optimization-too",
-    "href": "index.html#trajectory-oriented-optimization-too",
+    "objectID": "index.html#what-existing-methods-lack-1",
+    "href": "index.html#what-existing-methods-lack-1",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Trajectory-Oriented Optimization (TOO)",
-    "text": "Trajectory-Oriented Optimization (TOO)\n\n\nAugment the input space:\nInstead of \\(f(\\theta)\\), model \\(f(\\theta, r)\\) — treating the random seed \\(r\\) as an explicit input alongside parameters \\(\\theta\\).\n\nNow the simulator is a deterministic function of \\((\\theta, r)\\)\nWe can build a surrogate over the joint \\((\\theta, r)\\) space\nWe search for good \\((\\theta, r)\\) pairs, not just good \\(\\theta\\)\n\nThis is the Common Random Numbers (CRN) idea, extended to the calibration setting (Chen, Ankenman, and Nelson 2012).\n\nTwo ingredients needed:\n\nSurrogate model — emulates individual realizations \\(f(\\theta, r)\\); must respect seed structure\nOptimization algorithm — searches the joint \\((\\theta, r)\\) space efficiently under a limited simulation budget\n\n\nFinding good \\((\\theta, r)\\) pairs = trajectory discovery, not just parameter estimation."
+    "section": "What Existing Methods Lack",
+    "text": "What Existing Methods Lack\n\nMean-based calibration aggregates over randomness before searching.\n\n\n\nA good mean fit does not identify which realizations fit.\n\n\nThis cartoon describes approaches that emulate and calibrate the mean response. At a fixed input, replicates can have different timing and shape. Averaging collapses that variation before the search. A good fit of the mean does not tell us which individual input–replicate pairs reproduce the observed history. The limitation is about the search target, not a claim that every calibration method ignores randomness. ABC can use full trajectories or informative summaries; stochastic likelihood methods can explicitly represent variability. Our aim is to discover compatible realizations directly. The illustration is conceptual; it does not imply that a mean can never be realized."
   },
   {
-    "objectID": "index.html#common-random-numbers-crn",
-    "href": "index.html#common-random-numbers-crn",
+    "objectID": "index.html#our-contribution",
+    "href": "index.html#our-contribution",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Common Random Numbers (CRN)",
-    "text": "Common Random Numbers (CRN)\nKey insight: fixing the seed makes \\(f(\\theta, r)\\) smooth in \\(\\theta\\)\n\n\n\nFix seed \\(r = r_0\\), vary \\(\\theta\\) across its domain\nThe output \\(f(\\theta, r_0)\\) varies smoothly with \\(\\theta\\)\nA GP can interpolate this smooth function accurately\nRepeat for many seeds: each gives a “slice” of the output surface\n\n\nCRN converts a noisy, non-smooth calibration surface into a collection of smooth functions — one per seed.\n\n\nBenefit:\n\nFar fewer simulations needed to learn the surface\nReuse the same seeds across parameter values\nEnables variance reduction via control variates\nStandard in simulation optimization literature\n\n\n\nOur choice of surrogate: a Gaussian Process (GP) fitted over the joint \\((\\theta, r)\\) space — exploiting CRN smoothness to interpolate individual trajectories efficiently."
+    "section": "Our Contribution",
+    "text": "Our Contribution\n\nTrajectory-Oriented Optimization (TOO)\n\n\n  \n    Replicate-awaresurrogate\n    \n      • Learn individual realizations\n      • Share information across replicates\n      • Predict untried (x, r) pairs\n    \n  \n  \n    Adaptive gridThompson sampling\n    \n      • Explore promising regions\n      • Refine candidate locations\n      • Select simulations in batches\n    \n  \n\n\nOur contribution is trajectory-oriented optimization, or TOO. It brings together two main ingredients: a replicate-aware surrogate and adaptive grid Thompson sampling. Together they target the discovery of data-consistent input–replicate pairs under a limited simulation budget. The following slides will introduce each ingredient."
   },
   {
-    "objectID": "index.html#gaussian-process-a-brief-primer",
-    "href": "index.html#gaussian-process-a-brief-primer",
+    "objectID": "index.html#replicate-aware-surrogate",
+    "href": "index.html#replicate-aware-surrogate",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Gaussian Process: A Brief Primer",
-    "text": "Gaussian Process: A Brief Primer\n\n\nA Gaussian Process defines a distribution over functions:\n\\[z(x) \\sim \\mathrm{GP}\\!\\left(m(x),\\; k(x, x')\\right)\\]\n\n\\(m(x)\\): mean function (often \\(\\equiv 0\\))\n\\(k(x, x')\\): kernel — encodes output similarity as a function of input distance\nRBF kernel: \\(k(x, x') = \\exp\\!\\left(-\\|x - x'\\|^2 / 2\\ell^2\\right)\\), where \\(\\ell\\) controls smoothness\n\nPosterior at a new point \\(x_*\\) is Gaussian:\n\\[z(x_*) \\mid \\mathrm{Data} \\;\\sim\\; \\mathrm{Normal}\\!\\left(\\mu_*, \\;\\sigma^2_*\\right)\\]\nwith analytic \\(\\mu_*\\) and \\(\\sigma^2_*\\). Returns uncertainty alongside predictions."
-  },
-  {
-    "objectID": "index.html#the-crngp-surrogate",
-    "href": "index.html#the-crngp-surrogate",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "The CRNGP Surrogate",
-    "text": "The CRNGP Surrogate\nA Gaussian Process over the augmented \\((\\theta, r)\\) space\n\n\nThe surrogate models simulator output as:\n\\[f(\\theta, r) \\sim \\mathrm{GP}\\bigl(\\mu(\\theta, r),\\ k((\\theta,r),(\\theta',r'))\\bigr)\\]\nSeparable covariance kernel:\n\\[k\\bigl((\\theta,r),(\\theta',r')\\bigr) = k_\\theta(\\theta, \\theta') \\times k_s(r, r')\\]\nwhere the seed kernel gives constant inter-replicate correlation \\(\\rho\\) when \\(r \\neq r'\\):\n\\[k_s(r, r') = \\begin{cases} 1 & r = r' \\\\ \\rho & r \\neq r', \\; \\rho&lt;1 \\end{cases}\\]\n\n\n\nCRNGP vs HetGP:\n\nHetGP (or any other non-replicate aware) learns a single mean surface \\(\\mathbb{E}[f(\\theta)]\\) + variance\nCRNGP learns individual trajectory surfaces \\(f(\\theta, r)\\) per seed\nResult: CRNGP predicts which specific \\((\\theta, r)\\) pair is good (Fadikar et al. 2023)\n\n\n\nWhat this gives us:\n\nBorrows strength across seeds for the same \\(\\theta\\)\n\\(\\rho\\) captures how much trajectories share structure\nPosterior predictions are fast exploiting kronecker structure in the design\nUncertainty at both \\(\\theta\\) and \\((\\theta, r)\\)."
+    "section": "Replicate-Aware Surrogate",
+    "text": "Replicate-Aware Surrogate\nCommon Random Number Gaussian Process (CRNGP)\nA surrogate for individual realizations, indexed by input \\(x\\) and replicate \\(r\\):\n\\[f(x,r) \\sim \\mathrm{GP}\\!\\left(m(x,r),\\; k\\bigl((x,r),(x',r')\\bigr)\\right)\\]\n\n\nShared structure\n\\[k\\bigl((x,r),(x',r')\\bigr)\n= k_x(x,x')\\,k_r(r,r')\\]\n\nLearn how responses vary with \\(x\\)\nBorrow information across replicates\n\n\nReplicate-specific predictions\n\\[f(x,r)\\mid\\mathcal{D}\n\\sim \\mathcal{N}\\!\\left(\\mu(x,r),\\sigma^2(x,r)\\right)\\]\n\nPredict each realization’s response\nQuantify surrogate uncertainty at untried \\((x,r)\\)\n\n\n\nCRNGP is a Gaussian process surrogate that keeps the replicate identity as an explicit input. Here f is a scalar simulator response or calibration objective for an input–replicate pair. The covariance has an input component and a replicate component, allowing information to be shared without averaging away the individual realizations. The seed labels are categorical identities, not a numerical distance: nearby seed numbers are not assumed to produce similar outputs. Given evaluated simulations D, the surrogate predicts a mean and uncertainty for an untried pair. This uncertainty describes our incomplete knowledge of the simulator response; it is distinct from the spread of future system outcomes across compatible realizations. Details of the replicate kernel are in the backup slides."
   },
   {
     "objectID": "index.html#crngp-in-practice",
@@ -77,143 +84,45 @@
     "text": "CRNGP in Practice"
   },
   {
-    "objectID": "index.html#crngp-role-of-rho",
-    "href": "index.html#crngp-role-of-rho",
+    "objectID": "index.html#adaptive-grid-thompson-sampling",
+    "href": "index.html#adaptive-grid-thompson-sampling",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "CRNGP: Role of \\(\\rho\\)",
-    "text": "CRNGP: Role of \\(\\rho\\)\n\n\n\n\nThe inter-replicate correlation \\(\\rho\\):\n\n\\(\\rho\\) controls how much information is shared across seeds for the same \\(\\theta\\)\nHigh \\(\\rho\\): trajectories from different seeds are treated as nearly exchangeable — more borrowing, smoother surface\nLow \\(\\rho\\): each seed is treated as an independent function — more flexibility, less borrowing\n\\(\\rho\\) is estimated from data via maximum likelihood, adapting to the actual seed-to-seed variability in the simulator"
+    "section": "Adaptive Grid Thompson Sampling",
+    "text": "Adaptive Grid Thompson Sampling\n\n\nChoose the next batch of \\((x,r)\\) pairs; refine where we search.\n\n\n\nSample\nDraw plausible discrepancy surfaces from the CRNGP posterior:\n\\[\\widetilde{D}_b \\sim p(D\\mid\\mathcal{D}_n)\\]\n\nSelect & simulate\nEach draw proposes a promising pair:\n\\[ (x_b,r_b)=\\arg\\min_{(x,r)\\in\\mathcal{G}_n}\n\\widetilde{D}_b(x,r) \\]\nRun the batch; update CRNGP.\n\nAdapt\nRefine the candidate grid:\n\\[\\mathcal{G}_n \\longrightarrow \\mathcal{G}_{n+1}\\]\nConcentrate and add candidates near promising regions.\n\n\n\n\nWe search for small historical discrepancy D over a finite candidate grid G of input–replicate pairs. D_n denotes the completed simulator evaluations. Thompson sampling draws plausible discrepancy surfaces from the surrogate posterior; a minimizer of each draw proposes a simulation, with duplicate selections handled when forming the batch. After evaluating the batch, update the surrogate and adapt the candidate grid by filtering and densifying promising regions. This combines uncertainty-driven exploration with local refinement under a fixed simulation budget. These posterior draws concern uncertainty in the surrogate discrepancy surface, not posterior samples of calibrated parameters or future outcomes. Detailed grid adaptation is in the backup slides."
   },
   {
-    "objectID": "index.html#optimization-thompson-sampling",
-    "href": "index.html#optimization-thompson-sampling",
+    "objectID": "index.html#fixed-grid-thompson-sampling",
+    "href": "index.html#fixed-grid-thompson-sampling",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Optimization: Thompson Sampling",
-    "text": "Optimization: Thompson Sampling\nUsing CRNGP to find good \\((\\theta, r)\\) pairs\n\n\nAlgorithm:\n\nInitialize — run \\(n_\\text{init}\\) simulations on a Latin hypercube over \\((\\theta, r)\\); fit CRNGP\nRepeat until budget exhausted:\n\nDraw a posterior sample \\(\\tilde{f}\\) from the CRNGP\nFind \\((\\theta^*, r^*)\\) minimizing \\(\\|\\tilde{f}(\\theta, r) - y_\\text{obs}\\|^2\\) over the candidate grid\nRun simulator at \\((\\theta^*, r^*)\\); update CRNGP\n\n\n\n\nWhy Thompson Sampling?\n\nNatuarally balance exploration vs exploitation\nEach draw can point to a different promising region\nHandles the multi-modal nature of the trajectory space gracefully\nAmenable to batch evaluation on HPC\n\nKey property: the finite seed set \\(\\mathrm{R} = \\{r_1, \\ldots, r_m\\}\\) makes the problem computationally tractable — we search over a discrete grid of \\((\\theta, r)\\) pairs."
+    "section": "Fixed Grid Thompson Sampling",
+    "text": "Fixed Grid Thompson Sampling\n\nThompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
   },
   {
-    "objectID": "index.html#optimization-thompson-sampling-1",
-    "href": "index.html#optimization-thompson-sampling-1",
+    "objectID": "index.html#adaptive-grid-thompson-sampling-1",
+    "href": "index.html#adaptive-grid-thompson-sampling-1",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Optimization: Thompson Sampling",
-    "text": "Optimization: Thompson Sampling\n\nThompson Sampling iteratively selects \\((\\theta, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
+    "section": "Adaptive Grid Thompson Sampling",
+    "text": "Adaptive Grid Thompson Sampling\n\nIllustration of adaptive grid TS with a CRNGP surrogate to find \\((X, r)\\) tuple having minimal \\(Y\\) values."
   },
   {
-    "objectID": "index.html#application-a-covid-19-model",
-    "href": "index.html#application-a-covid-19-model",
+    "objectID": "index.html#result---matching-trajectories",
+    "href": "index.html#result---matching-trajectories",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Application: A COVID-19 model",
-    "text": "Application: A COVID-19 model\n\nBest 50 trajectories of cumulative hospitalizations that are consistent with the observations denoted by black dots when using CRNGP and HetGP surrogates in Thompson sampling algorithm."
+    "section": "Result - Matching Trajectories",
+    "text": "Result - Matching Trajectories\nStochastic SIR: multiple realizations reproduce the observed infection curve."
   },
   {
-    "objectID": "index.html#limitation-the-fixed-grid",
-    "href": "index.html#limitation-the-fixed-grid",
+    "objectID": "index.html#result---exploring-inputs",
+    "href": "index.html#result---exploring-inputs",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Limitation : The Fixed Grid",
-    "text": "Limitation : The Fixed Grid\nThompson Sampling explores well — but only where the grid lives\n\n\nIn this TOO setup, the candidate grid of \\((\\theta, r)\\) pairs is fixed at initialization:\n\nIf a promising region wasn’t covered by the initial design, it won’t be found\nWith high-dimensional \\(\\theta\\), good regions are sparse and unlikely to be well-covered by a uniform initial design\nAs the GP learns, the grid doesn’t adapt — budget spent sampling from regions already known to be poor\n\n\n\nQuestion: can we make the grid adapt as the GP learns — focusing on promising regions dynamically?"
+    "section": "Result - Exploring Inputs",
+    "text": "Result - Exploring Inputs\naCRN explores an extended region of infection and recovery rates."
   },
   {
-    "objectID": "index.html#adaptive-thompson-sampling-acrn",
-    "href": "index.html#adaptive-thompson-sampling-acrn",
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Adaptive Thompson Sampling (aCRN)",
-    "text": "Adaptive Thompson Sampling (aCRN)\nThree steps per iteration\n\n\nStep 1: Thompson Sampling\n\nMaintain a grid of candidate \\((\\theta, r)\\) pairs\nDraw a sample from the GP posterior\nSelect batch of points with best predicted objective\nEvaluate simulator, update GP\n\n\nStep 2a: Adaptive Grid - Filter\n\nImportance resample the grid using current objective estimates\nConcentrates candidates in high-likelihood regions\nLow-scoring \\((\\theta, r)\\) pairs dropped\n\n\nStep 2b: Adaptive Grid - Densify\n\nRun Metropolis–Hastings steps in \\(\\theta\\) space (seeds fixed)\nProposes new \\(\\theta\\) near existing good points\nAccepted with probability: \\[\\alpha = \\min\\!\\left\\{1,\\ \\frac{L(\\theta_\\text{can}, r) \\cdot q(\\theta_\\text{can} \\mid \\theta)}{L(\\theta, r) \\cdot q(\\theta \\mid \\theta_\\text{can})}\\right\\}\\]\n\n\n\n\n\n\nFilter + Densify together ensure the grid tracks promising regions as the GP learns."
-  },
-  {
-    "objectID": "index.html#adaptive-grid-too-in-practice",
-    "href": "index.html#adaptive-grid-too-in-practice",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Adaptive Grid TOO in Practice",
-    "text": "Adaptive Grid TOO in Practice\n\nIllustration of adaptive grid TS with a CRNGP surrogate to find \\((X, r)\\) tuple having minimal \\(Y\\) values."
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model",
-    "href": "index.html#simulated-experiment-stochastic-sir-model",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nA controlled testbed to compare methods\n\n\nModel: Discrete-time stochastic SIR with binomial transitions\n\nInfection rate \\(\\beta \\in [0, 1]\\)\nRecovery rate \\(\\gamma \\in [0, 1]\\)\nTrajectory: daily incidence curve\n\nBudget: 300–700 simulations total\nBaselines:\n\nfCRN — fixed grid, fixed seeds (no adaptation)\nfgCRN — fixed grid, flexible seeds\nfHet — heteroskedastic GP (standard approach)\naHet — adaptive heteroskedastic GP\n\n\nEvaluation metrics:\n\nProportion of discovered trajectories with RMSE \\(&lt; \\delta\\) (for \\(\\delta \\in \\{15, 20, 25, 30\\}\\))\nrAUC — relative area under the proportion-vs-budget curve; higher = finds good trajectories faster\nParameter space coverage"
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-1",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-1",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\n\nSimulated epidemic trajectories found by the aCRN method for a single experiment configuration."
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-2",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-2",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nQuality of Trajectories"
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-3",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-3",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nTime to Solution"
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-4",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-4",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nTime to Solution"
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-5",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-5",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nParameter Exploration"
-  },
-  {
-    "objectID": "index.html#simulated-experiment-stochastic-sir-model-6",
-    "href": "index.html#simulated-experiment-stochastic-sir-model-6",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Simulated Experiment: Stochastic SIR Model",
-    "text": "Simulated Experiment: Stochastic SIR Model\nParameter Exploration"
-  },
-  {
-    "objectID": "index.html#results-sir-model",
-    "href": "index.html#results-sir-model",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Results: SIR Model",
-    "text": "Results: SIR Model\n\n\naCRN outperforms all baselines across thresholds and budgets\nAt RMSE \\(&lt; 15\\) with budget = 500 simulations:\n\naCRN: \\(\\approx 25\\%\\) of trajectories below threshold\nfHet: \\(\\approx 15\\%\\) — best non-CRN comparator\nfCRN and fgCRN: lower still\n\nrAUC is highest for aCRN at every threshold level.\nParameter space coverage:\n\nfHet concentrates evaluations on a few grid points\naCRN explores a broader region of \\((\\beta, \\gamma)\\) space\nBetter coverage → more diverse calibrated trajectories\n\n\nWhy does adaptation help?\n\nEarly iterations identify promising \\(\\theta\\) regions\nGrid refinement focuses compute there\nThompson Sampling naturally balances exploration vs. exploitation\nFixed-grid methods waste budget on uninformative regions"
-  },
-  {
-    "objectID": "index.html#experiment-citycovid-agent-based-model",
-    "href": "index.html#experiment-citycovid-agent-based-model",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Experiment: CityCOVID Agent-Based Model",
-    "text": "Experiment: CityCOVID Agent-Based Model\nScaling up to a real, expensive ABM\n\n\nCityCOVID simulates \\(\\approx 2.7\\) million agents in Chicago\n\nAgents have realistic activity schedules (home, work, school, community)\nCOVID-19 transmission via contact networks\nValidated against Chicago public health data\n\nThree calibration parameters:\n\n\\(\\theta_1\\): susceptibility probability \\(\\in [0.01, 0.15]\\)\n\\(\\theta_2\\): stay-at-home compliance \\(\\in [0.1, 1]\\)\n\\(\\theta_3\\): behavioral adjustment \\(\\in [0.01, 0.5]\\)\n\nTarget data: Daily deaths + hospitalizations, Chicago, April–June 2020\n\nComputational setup:\n\nBudget: 3,000 simulations total\nInitial design: 20 parameter points × 30 replicates (600 runs)\nEach simulation: run on Argonne HPC via EMEWS framework"
-  },
-  {
-    "objectID": "index.html#results-citycovid",
-    "href": "index.html#results-citycovid",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Results: CityCOVID",
-    "text": "Results: CityCOVID\naCRN finds dramatically more calibrated trajectories\n\n\n\n\n\nThreshold\naCRN\nfHet\n\n\n\n\n\\(L &lt; 15\\)\n52 trajectories\n1 trajectory\n\n\n\\(L &lt; 20\\)\n149 trajectories\n53 trajectories\n\n\n\nWithin the same compute budget of 3,000 simulations.\naCRN discovers 52× more high-quality trajectories at the tighter threshold."
-  },
-  {
-    "objectID": "index.html#a-summary",
-    "href": "index.html#a-summary",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "A Summary",
-    "text": "A Summary\n\nWorks in \\((\\theta, r)\\) space — no information loss from averaging\nGP borrows strength across seeds via correlation \\(\\rho\\)\nAdaptive grid tracks promising regions dynamically\nThompson Sampling handles exploration-exploitation automatically\nSame simulator interface\nParallelizable batch evaluation (HPC-friendly)"
-  },
-  {
-    "objectID": "index.html#key-takeaways",
-    "href": "index.html#key-takeaways",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nSeeds matter. By treating them as inputs and we can get a richer calibration.\nTrajectory ensembles Multiple plausible \\((\\theta, r)\\) pairs give more accurate uncertainty quantification.\nTrajectory continuation is natural. Once we have calibrated \\((\\theta, r)\\) pairs, extending the simulation as new data arrives is straightforward.\n\n\nLimitations and Future Work\n\nFixed replicate set — seeds chosen at initialization, not adapted\nConstant inter-seed correlation \\(\\rho\\) — assumes uniform seed structure\nScalar output summaries — doesn’t yet handle functional/multivariate outputs directly\nGrid size is a tuning parameter — requires some sensitivity analysis"
-  },
-  {
-    "objectID": "index.html#conclusion",
-    "href": "index.html#conclusion",
-    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
-    "section": "Conclusion",
-    "text": "Conclusion\n\n\nStaying on Track: Efficient Trajectory Discovery with Adaptive Batch Sampling\nPreprint: arxiv.org/abs/2510.18099\n\n\n\n\n\n\nChen, Xi, Bruce E. Ankenman, and Barry L. Nelson. 2012. “The Effects of Common Random Numbers on Stochastic Kriging Metamodels.” ACM Transactions on Modeling and Computer Simulation 22 (2): 1–20.\n\n\nFadikar, Arindam, Nicholson Collier, Abby Stevens, Jonathan Ozik, Mickaël Binois, and Kok Ben Toh. 2023. “Trajectory-Oriented Optimization of Stochastic Epidemiological Models.” In 2023 Winter Simulation Conference (WSC), 1244–55. https://doi.org/10.1109/WSC60868.2023.10408258."
+    "section": "Summary",
+    "text": "Summary\n\nCalibration matters downstream. Missed historical matches can mean missed plausible futures.\nSearch for realizations. TOO targets compatible \\((x,r)\\) pairs, rather than only a mean response.\nAdaptive optimization approach. aCRN combines a replicate-aware surrogate with adaptive grid Thompson sampling.\nDMDU relevance: carry diverse, data-consistent behaviors forward to stress-test policies across plausible futures.\n\n\n  \n    \n    Preprint: arXiv:2510.18099\n  \n  \n    \n  \n\n\nThe DMDU connection is coverage: the historical behaviors retained by calibration shape the futures available for policy stress-testing. TOO explicitly searches over inputs and replicates. Our aCRN approach combines CRNGP with adaptive grid Thompson sampling to make that search practical under a simulation budget. Diverse historical matches support exploration of plausible futures; they do not automatically define calibrated future probabilities. Scenario and model uncertainty also remain important. The preprint provides the method and experimental details."
   }
 ]

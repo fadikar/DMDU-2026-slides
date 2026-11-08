@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="395" viewBox="0 0 1200 395" role="img" aria-labelledby="title"><title id="title">Averaging hides individual stochastic realizations</title><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs><rect width="1200" height="395" fill="white"/><g font-family="Arial,Helvetica,sans-serif"><text x="205" y="36" text-anchor="middle" font-size="26" fill="#1a6f8f">Same input, many replicates</text><text x="598" y="36" text-anchor="middle" font-size="26" fill="#b86f00">Average</text><text x="980" y="36" text-anchor="middle" font-size="26" fill="#1a6f8f">Fit the mean</text>
+<path d="M50 90V290H365 M830 90V290H1145" fill="none" stroke="#94a3b8" stroke-width="2"/>
+<g fill="none" stroke-width="3.5"><path d="M60 280C100 280 110 115 150 115S205 280 355 280" stroke="#1a6f8f"/><path d="M60 280C130 280 150 150 190 150S245 280 355 280" stroke="#b86f00"/><path d="M60 280C165 280 185 95 225 95S275 280 355 280" stroke="#2a7a45"/><path d="M60 280C185 280 220 175 260 175S310 280 355 280" stroke="#8b6aab"/></g>
+<path d="M390 195H465 M710 195H795" fill="none" stroke="#64748b" stroke-width="3" marker-end="url(#a)"/>
+<path d="M490 100Q595 85 700 100L635 215V266L560 296V215Z" fill="#fef3c7" stroke="#b86f00" stroke-width="3" stroke-linejoin="round"/>
+<path d="M510 120Q595 140 680 120" fill="none" stroke="#b86f00" stroke-width="2"/>
+<text x="595" y="179" text-anchor="middle" font-size="24" fill="#92400e">Collapse</text><text x="595" y="207" text-anchor="middle" font-size="24" fill="#92400e">replicates</text>
+<g fill="none" stroke-width="2.5" opacity="0.25">
+<path d="M840 280C880 280 890 115 930 115S985 280 1135 280" stroke="#1a6f8f"/>
+<path d="M840 280C910 280 930 150 970 150S1025 280 1135 280" stroke="#b86f00"/>
+<path d="M840 280C945 280 965 95 1005 95S1055 280 1135 280" stroke="#2a7a45"/>
+<path d="M840 280C965 280 1000 175 1040 175S1090 280 1135 280" stroke="#8b6aab"/>
+</g>
+<path d="M840 280C885 280 900 185 970 180S1060 275 1135 280" fill="none" stroke="#1a6f8f" stroke-width="5"/>
+<g fill="#24333c" stroke="white" stroke-width="1.5"><circle cx="850" cy="276" r="5"/><circle cx="890" cy="244" r="5"/><circle cx="930" cy="199" r="5"/><circle cx="970" cy="178" r="5"/><circle cx="1010" cy="202" r="5"/><circle cx="1050" cy="244" r="5"/><circle cx="1090" cy="268" r="5"/><circle cx="1130" cy="282" r="5"/></g>
+<text x="205" y="327" text-anchor="middle" font-size="20" fill="#64748b">Individual realizations</text><text x="980" y="327" text-anchor="middle" font-size="20" fill="#64748b">Mean curve + observations</text><text x="600" y="377" text-anchor="middle" font-size="22" fill="#92400e">Which replicate matched? The average does not tell us.</text></g></svg>

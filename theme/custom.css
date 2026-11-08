@@ -317,3 +317,33 @@ section[data-state="title-slide"] h1 {
   color: #6b3fa0;
   font-weight: 600;
 }
+
+/* Method slides: open columns with colored vertical dividers. */
+.reveal .columns.method-panels {
+  gap: 24px;
+  align-items: stretch;
+}
+.reveal .columns.method-panels > .column {
+  padding: 0 16px;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.reveal .columns.method-panels > .column + .column {
+  padding-left: 24px;
+  border-left: 2px solid rgba(184, 111, 0, 0.35);
+}
+.reveal .columns.sampling-panels > .column:nth-child(2) {
+  border-left-color: rgba(224, 83, 22, 0.35);
+}
+.reveal .columns.sampling-panels > .column:nth-child(3) {
+  border-left-color: rgba(42, 122, 69, 0.35);
+}
+
+/* Summary uses neutral text and bullet markers. */
+.reveal .plain-summary ul > li::before {
+  border-color: #666;
+}
+.reveal .plain-summary {
+  color: #222;
+}
