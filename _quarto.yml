@@ -31,7 +31,7 @@ format:
     code-block-border-left: "#1a6f8f"
 
 website:
-  title: "CISNET Talk"
+  title: "Off the grid trajectory discovery"
   navbar:
     left:
       - text: "Slides"
