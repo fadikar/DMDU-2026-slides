@@ -348,7 +348,7 @@ section[data-state="title-slide"] h1 {
   color: #222;
 }
 
-/* 4:3 projection layout (1080 × 810). */
+/* Projection layout (1440 × 810); fixed font sizes retained. */
 .reveal { font-size: 38.4px; }
 .reveal .slides section h2 { font-size: 36px !important; line-height: 1.15; }
 .reveal .slides h3 { font-size: 1.05em !important; line-height: 1.2; }
@@ -406,4 +406,26 @@ section[data-state="title-slide"] h1 {
 .reveal .body-near-title .slide-body {
   justify-content: flex-start;
   padding-top: 12px;
+}
+
+/* Workflow slides use explicit spacing rather than oversized centered content. */
+.reveal .workflow-slide .slide-body {
+  height: auto;
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+.reveal .workflow-slide .workflow-diagram {
+  display: block;
+  width: 1050px !important;
+  height: 411px !important;
+  max-width: 100% !important;
+  object-fit: contain;
+  margin: 0 auto !important;
+}
+.reveal .workflow-slide .slide-body p { margin: 0; }
+
+/* Map dimensions must not expand the team layout past its body area. */
+.reveal .team-slide .slide-body {
+  justify-content: center;
+  overflow: hidden;
 }

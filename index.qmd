@@ -24,7 +24,7 @@ execute:
   cache: false
 ---
 
-## Our Team {background-image="figures/background.jpg" background-opacity="0.15"}
+## Our Team {.team-slide background-image="figures/background.jpg" background-opacity="0.15"}
 
 ::: {.slide-body}
 ```{r}
@@ -73,7 +73,7 @@ ggsave("figures/us_map.png", p_us, width = 6, height = 3.5, dpi = 150, bg = "tra
 
 ```{=html}
 <!-- Flex: team diagram (left, ~75%) | maps (right, ~25%) -->
-<div style="display:flex;align-items:center;gap:20px;">
+<div style="display:flex;align-items:center;justify-content:center;gap:35px;width:100%;">
 
   <!-- Left: team spoke diagram scaled 87% (960×540 → 835×470) -->
   <div style="flex:0 0 710px;height:515px;font-size:28px;overflow:hidden;position:relative;">
@@ -137,9 +137,9 @@ ggsave("figures/us_map.png", p_us, width = 6, height = 3.5, dpi = 150, bg = "tra
   </div>
 
   <!-- Right: world map (top) + US map (bottom), no headings, transparent bg -->
-  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;">
-    <img src="figures/world_map.png" style="width:100%;height:auto;object-fit:contain;"/>
-    <img src="figures/us_map.png" style="width:100%;height:auto;object-fit:contain;"/>
+  <div style="flex:0 1 520px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:24px;">
+    <img src="figures/world_map.png" style="width:100%;height:215px;object-fit:contain;margin:0;"/>
+    <img src="figures/us_map.png" style="width:100%;height:245px;object-fit:contain;margin:0;"/>
   </div>
 
 </div>
@@ -149,21 +149,23 @@ ggsave("figures/us_map.png", p_us, width = 6, height = 3.5, dpi = 150, bg = "tra
 
 
 
-## Our Setting
+## Our Setting {.workflow-slide}
 
 ::: {.slide-body}
-::: {style="font-size:1em;color:#0d485e;margin:20px 0 18px;"}
+::: {style="font-size:1em;color:#0d485e;margin:0 0 16px;"}
 Simulation-based inference supports policy analysis under uncertainty.
 :::
 
-![](figures/system-calibration-policy.svg){width="100%" fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
+```{=html}
+<img class="workflow-diagram" src="figures/system-calibration-policy.svg" alt="Real system branches into observations and simulation; both feed calibration, followed by policy analysis.">
+```
 
 
-::: {style="text-align:center;font-size:1.05em;margin-top:20px;"}
+::: {style="text-align:center;font-size:1.05em;margin-top:16px;"}
 Calibration shapes the futures we carry into policy analysis.
 :::
 
-::: {style="font-size:0.43em;color:#64748b;margin-top:18px;"}
+::: {style="font-size:0.43em;color:#64748b;margin-top:10px;"}
 Icon sources: [world](https://github.com/tabler/tabler-icons/blob/main/icons/outline/world.svg), [chart-dots](https://github.com/tabler/tabler-icons/blob/main/icons/outline/chart-dots.svg), [desktop-analytics](https://github.com/tabler/tabler-icons/blob/main/icons/outline/device-desktop-analytics.svg), [adjustments](https://github.com/tabler/tabler-icons/blob/main/icons/outline/adjustments.svg), [route](https://github.com/tabler/tabler-icons/blob/main/icons/outline/route.svg) — Tabler Icons, Paweł Kuna; [MIT license](https://github.com/tabler/tabler-icons/blob/main/LICENSE). Adapted colors and size.
 :::
 
@@ -173,21 +175,23 @@ Icon sources: [world](https://github.com/tabler/tabler-icons/blob/main/icons/out
 Our setting is simulation-based inference and policy analysis. We use observations to constrain plausible model behavior, then explore how policies perform across uncertain futures. Calibration is one part of that workflow: future scenarios and model structure also matter. The question for this talk is how the calibration search affects which data-consistent behaviors we carry forward. The next slide illustrates why this matters for future uncertainty.
 :::
 
-## Calibration
+## Calibration {.workflow-slide}
 
 ::: {.slide-body}
-::: {style="font-size:1em;color:#0d485e;margin:20px 0 18px;"}
+::: {style="font-size:1em;color:#0d485e;margin:0 0 16px;"}
 Our focus: constrain simulation behavior using observations.
 :::
 
-![](figures/system-calibration-policy-focus.svg){width="100%" fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
+```{=html}
+<img class="workflow-diagram" src="figures/system-calibration-policy-focus.svg" alt="Real system branches into observations and simulation; both feed calibration, followed by policy analysis.">
+```
 
 
-::: {style="text-align:center;font-size:1.05em;margin-top:20px;"}
+::: {style="text-align:center;font-size:1.05em;margin-top:16px;"}
 Calibration shapes the futures we carry into policy analysis.
 :::
 
-::: {style="font-size:0.43em;color:#64748b;margin-top:18px;"}
+::: {style="font-size:0.43em;color:#64748b;margin-top:10px;"}
 Icon sources: [world](https://github.com/tabler/tabler-icons/blob/main/icons/outline/world.svg), [chart-dots](https://github.com/tabler/tabler-icons/blob/main/icons/outline/chart-dots.svg), [desktop-analytics](https://github.com/tabler/tabler-icons/blob/main/icons/outline/device-desktop-analytics.svg), [adjustments](https://github.com/tabler/tabler-icons/blob/main/icons/outline/adjustments.svg), [route](https://github.com/tabler/tabler-icons/blob/main/icons/outline/route.svg) — Tabler Icons, Paweł Kuna; [MIT license](https://github.com/tabler/tabler-icons/blob/main/LICENSE). Adapted colors and size.
 :::
 
@@ -427,7 +431,7 @@ CRNGP is a Gaussian process surrogate that keeps the replicate identity as an ex
 ::: {.slide-body}
 ::: {style="width:100%;"}
 
-::: {style="margin-bottom:35px;"}
+::: {style="margin-bottom:90px;"}
 **Choose the next batch of $(x,r)$ pairs; refine where we search.**
 :::
 
