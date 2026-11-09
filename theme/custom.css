@@ -347,3 +347,63 @@ section[data-state="title-slide"] h1 {
 .reveal .plain-summary {
   color: #222;
 }
+
+/* 4:3 projection layout (1080 × 810). */
+.reveal { font-size: 38.4px; }
+.reveal section h2 { font-size: 40.64px; line-height: 1.15; }
+.reveal h3 { font-size: 1.05em; }
+.reveal #title-slide .title {
+  font-size: 1.65em !important;
+  padding: 0.35em 0.55em;
+  margin-bottom: 0.65em;
+}
+.reveal section img {
+  max-width: 100%;
+  object-fit: contain;
+}
+.reveal section > p > img,
+.reveal section figure img {
+  max-height: 540px;
+  width: auto;
+  height: auto;
+}
+.reveal .columns > .column { min-width: 0; }
+.reveal .columns > .column + .column { padding-left: 24px; }
+.reveal .columns.method-panels { gap: 16px; }
+.reveal .columns.method-panels > .column { padding: 0 10px; }
+.reveal .columns.method-panels > .column + .column { padding-left: 18px; }
+.reveal .sampling-slide .columns { font-size: 1em; }
+.reveal .surrogate-slide .columns { font-size: 1em; }
+.reveal .plain-summary > ul { font-size: 1em; }
+.reveal .plain-summary > ul > li { margin-bottom: 0.45em; }
+.reveal .slide-logo { width: 140px !important; bottom: 14px !important; }
+.reveal .slide-number { bottom: 62px !important; }
+
+/* Keep titles inset and balance shorter slides vertically. */
+.reveal .slides > section:not(#title-slide) {
+  padding-top: 24px !important;
+  box-sizing: border-box;
+}
+.reveal .slides section h2 {
+  margin: 0 0 16px 0;
+  padding: 8px 18px 10px;
+}
+.reveal .slide-body {
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.reveal .slide-body > * { flex-shrink: 0; }
+.reveal .slide-body > p { margin: 10px 0; }
+.reveal .slide-body > figure { margin: 12px 0; }
+.reveal .plain-summary .slide-body > ul { font-size: 1em; }
+.reveal .plain-summary .slide-body > ul > li { margin-bottom: 0.45em; }
+
+/* These text slides start closer to the frame heading. */
+.reveal .body-near-title .slide-body {
+  justify-content: flex-start;
+  padding-top: 12px;
+}

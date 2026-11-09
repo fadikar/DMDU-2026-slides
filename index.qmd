@@ -13,7 +13,7 @@ title-slide-attributes:
   data-background-opacity: "0.25"
 format:
   revealjs:
-    margin: 0.15
+    margin: 0.06
     smaller: true
     code-fold: false
     code-overflow: scroll
@@ -26,6 +26,7 @@ execute:
 
 ## Our Team {background-image="figures/background.jpg" background-opacity="0.15"}
 
+::: {.slide-body}
 ```{r}
 #| echo: false
 #| include: false
@@ -72,63 +73,63 @@ ggsave("figures/us_map.png", p_us, width = 6, height = 3.5, dpi = 150, bg = "tra
 
 ```{=html}
 <!-- Flex: team diagram (left, ~75%) | maps (right, ~25%) -->
-<div style="display:flex;align-items:flex-start;gap:20px;">
+<div style="display:flex;align-items:center;gap:20px;">
 
   <!-- Left: team spoke diagram scaled 87% (960×540 → 835×470) -->
-  <div style="flex:0 0 835px;height:520px;overflow:hidden;position:relative;">
-    <div style="position:absolute;top:0;left:0;width:960px;height:540px;transform:scale(0.87);transform-origin:top left;">
+  <div style="flex:0 0 710px;height:515px;font-size:28px;overflow:hidden;position:relative;">
+    <div style="position:absolute;top:0;left:0;width:960px;height:540px;transform:translateY(28px) scale(0.74);transform-origin:top left;">
 
       <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;" viewBox="0 0 960 540">
-        <line x1="480" y1="252" x2="480" y2="165" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
+        <line x1="480" y1="252" x2="480" y2="125" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
         <line x1="585" y1="277" x2="771" y2="227" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
-        <line x1="573" y1="358" x2="633" y2="392" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
-        <line x1="387" y1="358" x2="327" y2="392" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
+        <line x1="573" y1="358" x2="683" y2="435" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
+        <line x1="387" y1="358" x2="277" y2="435" stroke="#1a6f8f" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
         <line x1="375" y1="277" x2="184" y2="225" stroke="#b86f00" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.5"/>
       </svg>
 
       <div style="position:absolute;top:305px;left:480px;transform:translate(-50%,-50%);width:220px;text-align:center;background:#dff0f7;border:2.5px solid #1a6f8f;border-radius:14px;padding:11px 16px;z-index:2;">
-        <div style="font-weight:700;color:#1a6f8f;font-size:0.84em;line-height:1.3;">Modeling, Simulation &amp; High Performance Computing</div>
-        <div style="font-size:0.65em;color:#666;margin-top:5px;">Argonne National Laboratory</div>
+        <div style="font-weight:700;color:#1a6f8f;font-size:0.9em;line-height:1.3;">Modeling, Simulation &amp; High Performance Computing</div>
+        <div style="font-size:0.75em;color:#666;margin-top:5px;">Argonne National Laboratory</div>
       </div>
 
-      <div style="position:absolute;top:5px;left:405px;width:150px;text-align:center;z-index:2;">
+      <div style="position:absolute;top:-35px;left:395px;width:170px;text-align:center;z-index:2;">
         <div style="background:#eef6fa;border:1.5px solid #1a6f8f;border-radius:10px;padding:9px 11px;">
-          <img src="figures/OZIK.jpg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
-          <div style="font-weight:700;color:#0d485e;font-size:0.84em;">Jonathan Ozik</div>
-          <div style="font-size:0.69em;color:#555;">Team Lead</div>
+          <img src="figures/OZIK.jpg" style="width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
+          <div style="font-weight:700;color:#0d485e;font-size:0.9em;">Jonathan Ozik</div>
+          <div style="font-size:0.74em;color:#555;">Team Lead</div>
         </div>
       </div>
 
-      <div style="position:absolute;top:143px;left:766px;width:160px;text-align:center;z-index:2;">
+      <div style="position:absolute;top:143px;left:756px;width:180px;text-align:center;z-index:2;">
         <div style="background:#eef6fa;border:1.5px solid #1a6f8f;border-radius:10px;padding:9px 11px;">
-          <img src="figures/COLLIER.png" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
-          <div style="font-weight:700;color:#0d485e;font-size:0.84em;">Nicholson Collier</div>
-          <div style="font-size:0.69em;color:#555;">Software Engineer</div>
+          <img src="figures/COLLIER.png" style="width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
+          <div style="font-weight:700;color:#0d485e;font-size:0.9em;">Nicholson Collier</div>
+          <div style="font-size:0.74em;color:#555;">Software Engineer</div>
         </div>
       </div>
 
-      <div style="position:absolute;top:367px;left:628px;width:150px;text-align:center;z-index:2;">
+      <div style="position:absolute;top:410px;left:668px;width:170px;text-align:center;z-index:2;">
         <div style="background:#eef6fa;border:1.5px solid #1a6f8f;border-radius:10px;padding:9px 11px;">
-          <img src="figures/OGARA.jpeg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
-          <div style="font-weight:700;color:#0d485e;font-size:0.84em;">David O'Gara</div>
-          <div style="font-size:0.69em;color:#555;">Computational Statistician</div>
+          <img src="figures/OGARA.jpeg" style="width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
+          <div style="font-weight:700;color:#0d485e;font-size:0.9em;">David O'Gara</div>
+          <div style="font-size:0.74em;color:#555;">Computational Statistician</div>
         </div>
       </div>
 
-      <div style="position:absolute;top:367px;left:182px;width:150px;text-align:center;z-index:2;">
+      <div style="position:absolute;top:410px;left:122px;width:170px;text-align:center;z-index:2;">
         <div style="background:#eef6fa;border:1.5px solid #1a6f8f;border-radius:10px;padding:9px 11px;">
-          <img src="figures/FADIKAR.jpg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
-          <div style="font-weight:700;color:#0d485e;font-size:0.84em;">Arindam Fadikar</div>
-          <div style="font-size:0.69em;color:#555;">Computational Statistician</div>
+          <img src="figures/FADIKAR.jpg" style="width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid #1a6f8f;display:block;margin:0 auto 5px;"/>
+          <div style="font-weight:700;color:#0d485e;font-size:0.9em;">Arindam Fadikar</div>
+          <div style="font-size:0.74em;color:#555;">Computational Statistician</div>
         </div>
       </div>
 
-      <div style="position:absolute;top:143px;left:34px;width:155px;text-align:center;z-index:2;">
+      <div style="position:absolute;top:143px;left:24px;width:175px;text-align:center;z-index:2;">
         <div style="background:#fdf5e6;border:1.5px dashed #b86f00;border-radius:10px;padding:9px 11px;">
-          <img src="figures/BINOIS.jpg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #b86f00;display:block;margin:0 auto 5px;"/>
-          <div style="font-weight:700;color:#0d485e;font-size:0.84em;">Mickael Binois</div>
-          <div style="font-size:0.69em;color:#555;">Outside Collaborator</div>
-          <div style="font-size:0.64em;color:#b86f00;margin-top:2px;">Inria</div>
+          <img src="figures/BINOIS.jpg" style="width:74px;height:74px;border-radius:50%;object-fit:cover;border:2px solid #b86f00;display:block;margin:0 auto 5px;"/>
+          <div style="font-weight:700;color:#0d485e;font-size:0.9em;">Mickael Binois</div>
+          <div style="font-size:0.74em;color:#555;">Outside Collaborator</div>
+          <div style="font-size:0.75em;color:#b86f00;margin-top:2px;">Inria</div>
         </div>
       </div>
 
@@ -136,21 +137,26 @@ ggsave("figures/us_map.png", p_us, width = 6, height = 3.5, dpi = 150, bg = "tra
   </div>
 
   <!-- Right: world map (top) + US map (bottom), no headings, transparent bg -->
-  <div style="flex:1;display:flex;flex-direction:column;gap:8px;padding-top:30px;">
-    <img src="figures/world_map.png" style="width:100%;"/>
-    <img src="figures/us_map.png" style="width:100%;"/>
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;">
+    <img src="figures/world_map.png" style="width:100%;height:auto;object-fit:contain;"/>
+    <img src="figures/us_map.png" style="width:100%;height:auto;object-fit:contain;"/>
   </div>
 
 </div>
 ```
 
+:::
+
+
+
 ## Our Setting
 
-::: {style="font-size:1.2em;color:#0d485e;margin:20px 0 18px;"}
+::: {.slide-body}
+::: {style="font-size:1em;color:#0d485e;margin:20px 0 18px;"}
 Simulation-based inference supports policy analysis under uncertainty.
 :::
 
-![](figures/system-calibration-policy.svg){width=1200 fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
+![](figures/system-calibration-policy.svg){width="100%" fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
 
 
 ::: {style="text-align:center;font-size:1.05em;margin-top:20px;"}
@@ -159,6 +165,8 @@ Calibration shapes the futures we carry into policy analysis.
 
 ::: {style="font-size:0.43em;color:#64748b;margin-top:18px;"}
 Icon sources: [world](https://github.com/tabler/tabler-icons/blob/main/icons/outline/world.svg), [chart-dots](https://github.com/tabler/tabler-icons/blob/main/icons/outline/chart-dots.svg), [desktop-analytics](https://github.com/tabler/tabler-icons/blob/main/icons/outline/device-desktop-analytics.svg), [adjustments](https://github.com/tabler/tabler-icons/blob/main/icons/outline/adjustments.svg), [route](https://github.com/tabler/tabler-icons/blob/main/icons/outline/route.svg) — Tabler Icons, Paweł Kuna; [MIT license](https://github.com/tabler/tabler-icons/blob/main/LICENSE). Adapted colors and size.
+:::
+
 :::
 
 ::: notes
@@ -167,11 +175,12 @@ Our setting is simulation-based inference and policy analysis. We use observatio
 
 ## Calibration
 
-::: {style="font-size:1.2em;color:#0d485e;margin:20px 0 18px;"}
+::: {.slide-body}
+::: {style="font-size:1em;color:#0d485e;margin:20px 0 18px;"}
 Our focus: constrain simulation behavior using observations.
 :::
 
-![](figures/system-calibration-policy-focus.svg){width=1200 fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
+![](figures/system-calibration-policy-focus.svg){width="100%" fig-alt="A real-world system is observed and represented by a simulation model. Observations and simulated outputs feed calibration. The calibrated simulation model supports policy analysis."}
 
 
 ::: {style="text-align:center;font-size:1.05em;margin-top:20px;"}
@@ -182,16 +191,21 @@ Calibration shapes the futures we carry into policy analysis.
 Icon sources: [world](https://github.com/tabler/tabler-icons/blob/main/icons/outline/world.svg), [chart-dots](https://github.com/tabler/tabler-icons/blob/main/icons/outline/chart-dots.svg), [desktop-analytics](https://github.com/tabler/tabler-icons/blob/main/icons/outline/device-desktop-analytics.svg), [adjustments](https://github.com/tabler/tabler-icons/blob/main/icons/outline/adjustments.svg), [route](https://github.com/tabler/tabler-icons/blob/main/icons/outline/route.svg) — Tabler Icons, Paweł Kuna; [MIT license](https://github.com/tabler/tabler-icons/blob/main/LICENSE). Adapted colors and size.
 :::
 
+:::
+
 ::: notes
 Calibration is the focus of this talk. Observations and simulated behavior meet here, constraining which model realizations we carry forward into policy analysis. The other parts of the workflow remain important; the faded blocks emphasize the scope of this work.
 :::
 
 ## Calibration Shapes Decision Uncertainty
 
-![](figures/calibration-decisions.svg){width=1120 fig-alt="Eighteen conceptual fitted trajectories pass within observation error bars but diverge under a future scenario. Their future spread connects calibration uncertainty to robust decisions."}
+::: {.slide-body}
+![](figures/calibration-decisions.svg){width="100%" fig-alt="Eighteen conceptual fitted trajectories pass within observation error bars but diverge under a future scenario. Their future spread connects calibration uncertainty to robust decisions."}
 
 ::: {style="text-align:center;font-size:1.15em;margin-top:18px;"}
 [Calibrate to observations]{.hl-blue} → [Propagate uncertainty]{.hl-amber} → [Stress-test decisions]{.hl-green}
+:::
+
 :::
 
 ::: notes
@@ -200,10 +214,13 @@ A stochastic model can reproduce the observed history in several ways. Compatibl
 
 ## Stochastic Simulation
 
-![](figures/stochastic-replicates.svg){width=1120 fig-alt="A fixed input x enters a stochastic simulator. Different random seeds produce different output trajectories."}
+::: {.slide-body}
+![](figures/stochastic-replicates.svg){width="100%" fig-alt="A fixed input x enters a stochastic simulator. Different random seeds produce different output trajectories."}
 
 ::: {style="text-align:center;font-size:1.1em;margin-top:12px;"}
 $y(t) = f(x, r; t)$ — [Fixed input $x$]{.hl-blue}, [different random seeds $r$]{.hl-amber}
+:::
+
 :::
 
 ::: notes
@@ -212,10 +229,13 @@ A stochastic simulator contains random events. Holding the model inputs x fixed,
 
 ## Missed Matches
 
-![](figures/calibration-missed-matches.svg){width=1120 fig-alt="The same historical observations and error bars are shown with eighteen compatible trajectories. Only four central trajectories are retained; missed trajectories are faded. The retained future range omits plausible extreme outcomes."}
+::: {.slide-body}
+![](figures/calibration-missed-matches.svg){width="100%" fig-alt="The same historical observations and error bars are shown with eighteen compatible trajectories. Only four central trajectories are retained; missed trajectories are faded. The retained future range omits plausible extreme outcomes."}
 
 ::: {style="text-align:center;font-size:1.1em;margin-top:12px;"}
 [Miss relevant $(x, r)$ matches]{.hl-red} → [Miss plausible futures]{.hl-amber}
+:::
+
 :::
 
 ::: notes
@@ -224,7 +244,8 @@ Return to the earlier illustration. Every displayed input–replicate pair fits 
 
 ## Finding Matches
 
-::: {style="min-height:600px;display:flex;flex-direction:column;justify-content:center;"}
+::: {.slide-body}
+::: {style="width:100%;"}
 
 
 ::: {.columns}
@@ -259,13 +280,16 @@ $$\mathcal{A}_{\delta} = \left\{(x,r): d\!\left(f(x,r), y_{\mathrm{obs}}\right) 
 
 :::
 
+:::
+
 ::: notes
 The previous slide showed the consequence of missing compatible runs. This changes the computational target: search for a collection of input–replicate pairs whose simulated histories are consistent with the observations, rather than only a parameter vector with a good mean response. Here x denotes model parameters and r identifies a random realization. The discrepancy d compares the historical portion only; its definition and tolerance delta should reflect observational uncertainty and the intended calibration criterion. With expensive simulations, exhaustive search is infeasible, so the next-run choice matters. This motivates trajectory discovery under a finite budget. The accepted collection supports coverage of compatible futures; it is not automatically a posterior sample or a probability-weighted forecast.
 :::
 
 ## What Existing Methods Lack
 
-::: {style="min-height:600px;display:flex;flex-direction:column;justify-content:center;"}
+::: {.slide-body}
+::: {style="width:100%;"}
 
 
 ::: {.columns}
@@ -292,43 +316,51 @@ Mean-based methods [aggregate over randomness]{.hl-red}. A good mean fit does no
 **The consequence:** the search targets the mean response, rather than explicitly discovering compatible $(x,r)$ pairs.
 :::
 
+:::
+
+
+
 
 
 ## What Existing Methods Lack
 
+::: {.slide-body}
 ::: {style="font-size:1.15em;margin:15px 0 10px;"}
 Mean-based calibration [aggregates over randomness]{.hl-red} before searching.
 :::
 
-![](figures/averaging-cartoon.svg){width=1150 fig-alt="Conceptual cartoon: several differently timed stochastic trajectories enter an averaging funnel. A single mean curve emerges and is compared with observations, hiding which individual realizations match."}
+![](figures/averaging-cartoon.svg){width="100%" fig-alt="Conceptual cartoon: several differently timed stochastic trajectories enter an averaging funnel. A single mean curve emerges and is compared with observations, hiding which individual realizations match."}
 
 ::: {style="text-align:center;font-size:1.1em;margin-top:15px;"}
 [A good mean fit]{.hl-blue} does not identify [which realizations fit]{.hl-amber}.
+:::
+
 :::
 
 ::: notes
 This cartoon describes approaches that emulate and calibrate the mean response. At a fixed input, replicates can have different timing and shape. Averaging collapses that variation before the search. A good fit of the mean does not tell us which individual input–replicate pairs reproduce the observed history. The limitation is about the search target, not a claim that every calibration method ignores randomness. ABC can use full trajectories or informative summaries; stochastic likelihood methods can explicitly represent variability. Our aim is to discover compatible realizations directly. The illustration is conceptual; it does not imply that a mean can never be realized.
 :::
 
-## Our Contribution
+## Our Contribution {.body-near-title}
 
+::: {.slide-body}
 ::: {style="text-align:center;font-size:1.4em;color:#0d485e;margin:30px 0 45px;"}
 **Trajectory-Oriented Optimization (TOO)**
 :::
 
 ```{=html}
-<div style="display:flex;gap:45px;max-width:1100px;margin:0 auto;">
-  <div style="flex:1;text-align:center;padding:35px 25px;background:#eef6fa;border:2px solid #1a6f8f;border-radius:14px;color:#1a6f8f;font-size:1.3em;font-weight:600;">
+<div style="display:flex;gap:28px;max-width:100%;margin:0 auto;">
+  <div style="flex:1;text-align:center;padding:28px 20px;background:#eef6fa;border:2px solid #1a6f8f;border-radius:14px;color:#1a6f8f;font-size:1.15em;font-weight:600;">
     Replicate-aware<br>surrogate
-    <div style="text-align:left;font-size:0.85em;font-weight:400;line-height:1.9;margin-top:24px;border-top:1px solid #b7d5e0;padding-top:18px;">
+    <div style="text-align:left;font-size:0.85em;font-weight:400;line-height:1.65;margin-top:24px;border-top:1px solid #b7d5e0;padding-top:18px;">
       <div>• Learn individual realizations</div>
       <div>• Share information across replicates</div>
       <div>• Predict untried (<i>x</i>, <i>r</i>) pairs</div>
     </div>
   </div>
-  <div style="flex:1;text-align:center;padding:35px 25px;background:#fff5e6;border:2px solid #b86f00;border-radius:14px;color:#92400e;font-size:1.3em;font-weight:600;">
+  <div style="flex:1;text-align:center;padding:28px 20px;background:#fff5e6;border:2px solid #b86f00;border-radius:14px;color:#92400e;font-size:1.15em;font-weight:600;">
     Adaptive grid<br>Thompson sampling
-    <div style="text-align:left;font-size:0.85em;font-weight:400;line-height:1.9;margin-top:24px;border-top:1px solid #e9cfaa;padding-top:18px;">
+    <div style="text-align:left;font-size:0.85em;font-weight:400;line-height:1.65;margin-top:24px;border-top:1px solid #e9cfaa;padding-top:18px;">
       <div>• Explore promising regions</div>
       <div>• Refine candidate locations</div>
       <div>• Select simulations in batches</div>
@@ -337,12 +369,15 @@ This cartoon describes approaches that emulate and calibrate the mean response. 
 </div>
 ```
 
+:::
+
 ::: notes
 Our contribution is trajectory-oriented optimization, or TOO. It brings together two main ingredients: a replicate-aware surrogate and adaptive grid Thompson sampling. Together they target the discovery of data-consistent input–replicate pairs under a limited simulation budget. The following slides will introduce each ingredient.
 :::
 
-## Replicate-Aware Surrogate
+## Replicate-Aware Surrogate {.surrogate-slide}
 
+::: {.slide-body}
 [**Common Random Number Gaussian Process (CRNGP)**]{.hl-blue}
 
 A surrogate for individual realizations, indexed by input $x$ and replicate $r$:
@@ -370,6 +405,7 @@ $$f(x,r)\mid\mathcal{D}
 :::
 :::
 
+:::
 
 ::: notes
 CRNGP is a Gaussian process surrogate that keeps the replicate identity as an explicit input. Here f is a scalar simulator response or calibration objective for an input–replicate pair. The covariance has an input component and a replicate component, allowing information to be shared without averaging away the individual realizations. The seed labels are categorical identities, not a numerical distance: nearby seed numbers are not assumed to produce similar outputs. Given evaluated simulations D, the surrogate predicts a mean and uncertainty for an untried pair. This uncertainty describes our incomplete knowledge of the simulator response; it is distinct from the spread of future system outcomes across compatible realizations. Details of the replicate kernel are in the backup slides.
@@ -378,12 +414,18 @@ CRNGP is a Gaussian process surrogate that keeps the replicate identity as an ex
 
 ## CRNGP in Practice
 
-![](figures/crngp_vs_hetgp_sim_traj_fit.png){width="80%"}
+::: {.slide-body}
+![](figures/crngp_vs_hetgp_sim_traj_fit.png){width="95%"}
+
+:::
 
 
-## Adaptive Grid Thompson Sampling
 
-::: {style="min-height:600px;display:flex;flex-direction:column;justify-content:center;"}
+
+## Adaptive Grid Thompson Sampling {.sampling-slide .body-near-title}
+
+::: {.slide-body}
+::: {style="width:100%;"}
 
 ::: {style="margin-bottom:35px;"}
 **Choose the next batch of $(x,r)$ pairs; refine where we search.**
@@ -424,33 +466,56 @@ Concentrate and add candidates near promising regions.
 
 :::
 
+:::
+
 ::: notes
 We search for small historical discrepancy D over a finite candidate grid G of input–replicate pairs. D_n denotes the completed simulator evaluations. Thompson sampling draws plausible discrepancy surfaces from the surrogate posterior; a minimizer of each draw proposes a simulation, with duplicate selections handled when forming the batch. After evaluating the batch, update the surrogate and adapt the candidate grid by filtering and densifying promising regions. This combines uncertainty-driven exploration with local refinement under a fixed simulation budget. These posterior draws concern uncertainty in the surrogate discrepancy surface, not posterior samples of calibrated parameters or future outcomes. Detailed grid adaptation is in the backup slides.
 :::
 
 ## Fixed Grid Thompson Sampling
 
-![Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/crngp_ts_opt_short.png){width="80%" fig-align="center"}
+::: {.slide-body}
+![Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/crngp_ts_opt_short.png){width="95%" fig-align="center"}
+
+:::
+
+
 
 ## Adaptive Grid Thompson Sampling
 
-![Illustration of adaptive grid TS with a CRNGP surrogate to find $(X, r)$ tuple having minimal $Y$ values.](figures/example_BO.png){width="80%" fig-align="center"}
+::: {.slide-body}
+![Illustration of adaptive grid TS with a CRNGP surrogate to find $(X, r)$ tuple having minimal $Y$ values.](figures/example_BO.png){width="95%" fig-align="center"}
+
+:::
+
+
 
 
 ## Result - Matching Trajectories
 
+::: {.slide-body}
 Stochastic SIR: multiple realizations reproduce the observed infection curve.
 
-![](figures/trajectories_found_aCRN_example_0.45_0.35.png){width="82%" fig-align="center"}
+![](figures/trajectories_found_aCRN_example_0.45_0.35.png){width="95%" fig-align="center"}
+
+:::
+
+
 
 ## Result - Exploring Inputs
 
+::: {.slide-body}
 aCRN explores an extended region of infection and recovery rates.
 
-![](figures/density_all_6.png){width="82%" fig-align="center"}
+![](figures/density_all_6.png){width="95%" fig-align="center"}
+
+:::
+
+
 
 ## Summary {.plain-summary}
 
+::: {.slide-body}
 - **Calibration matters downstream.** Missed historical matches can mean missed plausible futures.
 
 - **Search for realizations.** TOO targets compatible $(x,r)$ pairs, rather than only a mean response.
@@ -460,16 +525,18 @@ aCRN explores an extended region of infection and recovery rates.
 - **DMDU relevance:** carry diverse, data-consistent behaviors forward to stress-test policies across plausible futures.
 
 ```{=html}
-<div style="display:flex;align-items:center;gap:45px;margin:25px 0 0 25px;">
+<div style="display:flex;align-items:center;gap:25px;margin:20px 0 0 0;">
   <div style="flex:1;color:#222;font-size:0.85em;line-height:1.45;">
     <img src="figures/paper-title-authors.png" alt="Paper title and authors: Staying on Track: Efficient Trajectory Discovery with Adaptive Batch Sampling" style="display:block;width:100%;max-height:290px;object-fit:contain;margin:0 0 8px;">
     Preprint: <a href="https://arxiv.org/abs/2510.18099" style="color:#222;text-decoration:underline;">arXiv:2510.18099</a>
   </div>
-  <a href="https://arxiv.org/abs/2510.18099" style="flex:0 0 250px;margin-right:45px;">
+  <a href="https://arxiv.org/abs/2510.18099" style="flex:0 0 250px;margin-right:10px;">
     <img src="figures/paper.png" alt="QR code linking to the preprint" style="display:block;width:250px;height:250px;margin:0;">
   </a>
 </div>
 ```
+
+:::
 
 ::: notes
 The DMDU connection is coverage: the historical behaviors retained by calibration shape the futures available for policy stress-testing. TOO explicitly searches over inputs and replicates. Our aCRN approach combines CRNGP with adaptive grid Thompson sampling to make that search practical under a simulation budget. Diverse historical matches support exploration of plausible futures; they do not automatically define calibrated future probabilities. Scenario and model uncertainty also remain important. The preprint provides the method and experimental details.

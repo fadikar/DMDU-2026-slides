@@ -10,11 +10,12 @@ format:
     theme: simple
     css: theme/custom.css
     logo: figures/argonne-logo.png
-    width: 1440
+    width: 1080
     height: 810
-    margin: 0.1
+    margin: 0.06
     minScale: 0.2
     maxScale: 4
+    auto-stretch: false
     auto-animate: true
     slide-number: true
     incremental: false
