@@ -25,6 +25,13 @@
     "href": "index.html#calibration-shapes-decision-uncertainty",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
     "section": "Calibration Shapes Decision Uncertainty",
+    "text": "Calibration Shapes Decision Uncertainty\n\n\n\nSearch candidate inputs → Retain historical matches\n\n\n\nStart with candidate inputs and stochastic replicates. Many runs do not match the observed history; retain the compatible input–replicate pairs. The future is deliberately hidden until the next slide, which reveals it without moving the figure."
+  },
+  {
+    "objectID": "index.html#calibration-shapes-decision-uncertainty-1",
+    "href": "index.html#calibration-shapes-decision-uncertainty-1",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Calibration Shapes Decision Uncertainty",
     "text": "Calibration Shapes Decision Uncertainty\n\n\n\nCalibrate to observations → Propagate uncertainty → Stress-test decisions\n\n\n\nA stochastic model can reproduce the observed history in several ways. Compatible parameter values and stochastic realizations can produce different future outcomes under the same scenario. Calibration determines which possibilities we carry forward, and how we represent them; it does not remove uncertainty about future conditions or model structure. If we retain only a best fit or an average trajectory, we can miss threshold crossings that matter for decisions. For DMDU, the connection is to stress-testing actions across plausible futures. The figure is conceptual, not a forecast or a calibrated probability distribution."
   },
   {
@@ -39,7 +46,7 @@
     "href": "index.html#missed-matches",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
     "section": "Missed Matches",
-    "text": "Missed Matches\n\n\n\nMiss relevant \\((x, r)\\) matches → Miss plausible futures\n\n\n\nReturn to the earlier illustration. Every displayed input–replicate pair fits within the historical observation error bars. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual."
+    "text": "Missed Matches\n\n\n\nMiss relevant \\((x, r)\\) matches → Miss plausible futures\n\n\n\nReturn to the earlier illustration. Pale terracotta points and historical paths represent nonmatching candidates. The blue and dashed gray paths represent input–replicate pairs compatible with the historical observation error bars. The input panel is a conceptual two-dimensional projection; matching is assessed for each (x,r) pair, not for x alone. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual."
   },
   {
     "objectID": "index.html#finding-matches",

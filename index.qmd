@@ -204,7 +204,22 @@ Calibration is the focus of this talk. Observations and simulated behavior meet 
 ## Calibration Shapes Decision Uncertainty
 
 ::: {.slide-body}
-![](figures/calibration-decisions.svg){width="100%" fig-alt="Eighteen conceptual fitted trajectories pass within observation error bars but diverge under a future scenario. Their future spread connects calibration uncertainty to robust decisions."}
+![](figures/calibration-history-only.svg){width="100%" fig-alt="A candidate input-space panel accompanies historical simulations: pale terracotta runs do not match observations; eighteen blue matching realizations continue into diverse futures."}
+
+::: {style="text-align:center;font-size:1.15em;margin-top:18px;"}
+[Search candidate inputs]{.hl-blue} → [Retain historical matches]{.hl-amber}
+:::
+
+:::
+
+::: notes
+Start with candidate inputs and stochastic replicates. Many runs do not match the observed history; retain the compatible input–replicate pairs. The future is deliberately hidden until the next slide, which reveals it without moving the figure.
+:::
+
+## Calibration Shapes Decision Uncertainty
+
+::: {.slide-body}
+![](figures/calibration-decisions.svg){width="100%" fig-alt="A candidate input-space panel accompanies historical simulations: pale terracotta runs do not match observations; eighteen blue matching realizations continue into diverse futures."}
 
 ::: {style="text-align:center;font-size:1.15em;margin-top:18px;"}
 [Calibrate to observations]{.hl-blue} → [Propagate uncertainty]{.hl-amber} → [Stress-test decisions]{.hl-green}
@@ -234,7 +249,7 @@ A stochastic simulator contains random events. Holding the model inputs x fixed,
 ## Missed Matches
 
 ::: {.slide-body}
-![](figures/calibration-missed-matches.svg){width="100%" fig-alt="The same historical observations and error bars are shown with eighteen compatible trajectories. Only four central trajectories are retained; missed trajectories are faded. The retained future range omits plausible extreme outcomes."}
+![](figures/calibration-missed-matches.svg){width="100%" fig-alt="Candidate inputs and nonmatching historical simulations accompany eighteen compatible trajectories. Four matches are retained in blue; missed matches are dashed gray, showing omitted plausible futures."}
 
 ::: {style="text-align:center;font-size:1.1em;margin-top:12px;"}
 [Miss relevant $(x, r)$ matches]{.hl-red} → [Miss plausible futures]{.hl-amber}
@@ -243,7 +258,7 @@ A stochastic simulator contains random events. Holding the model inputs x fixed,
 :::
 
 ::: notes
-Return to the earlier illustration. Every displayed input–replicate pair fits within the historical observation error bars. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual.
+Return to the earlier illustration. Pale terracotta points and historical paths represent nonmatching candidates. The blue and dashed gray paths represent input–replicate pairs compatible with the historical observation error bars. The input panel is a conceptual two-dimensional projection; matching is assessed for each (x,r) pair, not for x alone. Suppose our search finds only the four central paths. Their future spread appears narrow, while omitted matches include more extreme future outcomes. Missing relevant matches can distort the propagated uncertainty and affect decisions. This is a coverage argument: finding all compatible paths alone does not assign calibrated probabilities, and futures must also account for scenario and model uncertainty. The example is conceptual.
 :::
 
 ## Finding Matches
