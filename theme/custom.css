@@ -445,3 +445,20 @@ section[data-state="title-slide"] h1 {
   margin: 0 auto !important;
 }
 .reveal .posterior-cartoon-slide .slide-body p { margin: 0; }
+
+/* Compact GP illustration beside the CRNGP introduction. */
+.reveal .crngp-intro-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.reveal .crngp-intro-row > div { flex: 1; }
+.reveal .crngp-intro-row > img {
+  flex: 0 0 410px;
+  width: 410px;
+  height: 210px;
+  margin: 0;
+  object-fit: contain;
+}

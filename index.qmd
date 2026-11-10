@@ -399,9 +399,16 @@ Our contribution is trajectory-oriented optimization, or TOO. It brings together
 ## Replicate-Aware Surrogate {.surrogate-slide}
 
 ::: {.slide-body}
-[**Common Random Number Gaussian Process (CRNGP)**]{.hl-blue}
+```{=html}
+<div class="crngp-intro-row">
+  <div>
+    <div class="hl-blue"><strong>Common Random Number Gaussian Process (CRNGP)</strong></div>
+    <div style="margin-top:8px;">A surrogate for individual realizations, indexed by input <i>x</i> and replicate <i>r</i>:</div>
+  </div>
+  <img src="figures/gp-fitting-cartoon.svg" alt="GP mean fitted through sample points, with football-shaped uncertainty widening between samples.">
+</div>
+```
 
-A surrogate for individual realizations, indexed by input $x$ and replicate $r$:
 
 $$f(x,r) \sim \mathrm{GP}\!\left(m(x,r),\; k\bigl((x,r),(x',r')\bigr)\right)$$
 
