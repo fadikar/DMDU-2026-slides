@@ -455,19 +455,18 @@ CRNGP is a Gaussian process surrogate that keeps the replicate identity as an ex
 ### Sample {.hl-blue}
 
 * Fit/update surrogate based on $f_n = \{ f(x_1, r_1), \ldots, f(x_n, r_n) \}$. 
-* Draw plausible response from the CRNGP posterior:
+* Draw plausible response from the CRNGP posterior at many $(x_b,r_b)$:
 
-$$\widetilde{f}_b \sim p(f\mid\mathcal{f}_n)$$
+$$\widetilde{f}(x_i,r_i) \sim p(f\mid\mathcal{f}_n)$$
 :::
 ::: {.column width="34%"}
 ### Select & simulate {.hl-orange}
 
 * Each draw proposes a promising pair from the grid $\mathcal{G}_n$.
-
 $$ (x_b,r_b)= \\ \arg\min_{(x,r)\in\mathcal{G}_n}
-| \widetilde{f}_b(x,r) - f^{\text{obs}} | $$
-
-* Run the batch; update CRNGP.
+| \widetilde{f}_(x,r) - y_{\text{obs}} | $$
+* Run new simulation at $(x_b,r_b)$ 
+* Update CRNGP surrogate
 :::
 ::: {.column width="33%"}
 ### Adapt {.hl-green}
@@ -495,10 +494,30 @@ We search for small historical discrepancy D over a finite candidate grid G of i
 ## Fixed Grid Thompson Sampling
 
 ::: {.slide-body}
-![Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/crngp_ts_opt_short.png){width="95%" fig-align="center"}
+![First 1 iteration rows shown. Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/fixed-grid-reveal-1.svg){width="95%" fig-align="center"}
 
 :::
 
+## Fixed Grid Thompson Sampling
+
+::: {.slide-body}
+![First 2 iteration rows shown. Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/fixed-grid-reveal-2.svg){width="95%" fig-align="center"}
+
+:::
+
+## Fixed Grid Thompson Sampling
+
+::: {.slide-body}
+![First 3 iteration rows shown. Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/fixed-grid-reveal-3.svg){width="95%" fig-align="center"}
+
+:::
+
+## Fixed Grid Thompson Sampling
+
+::: {.slide-body}
+![First 4 iteration rows shown. Thompson Sampling iteratively selects $(x, r)$ candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy.](figures/crngp_ts_opt_short.png){width="95%" fig-align="center"}
+
+:::
 
 
 ## Adaptive Grid Thompson Sampling

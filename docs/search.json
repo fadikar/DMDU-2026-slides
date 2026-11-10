@@ -95,14 +95,35 @@
     "href": "index.html#adaptive-grid-thompson-sampling",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
     "section": "Adaptive Grid Thompson Sampling",
-    "text": "Adaptive Grid Thompson Sampling\n\n\n\nChoose the next batch of \\((x,r)\\) pairs; refine where we search.\n\n\n\nSample\n\nFit/update surrogate based on \\(f_n = \\{ f(x_1, r_1), \\ldots, f(x_n, r_n) \\}\\).\nDraw plausible response from the CRNGP posterior:\n\n\\[\\widetilde{f}_b \\sim p(f\\mid\\mathcal{f}_n)\\]\n\nSelect & simulate\nEach draw proposes a promising pair from the grid \\(\\mathcal{G}_n\\).\n\\[ (x_b,r_b)= \\\\ \\arg\\min_{(x,r)\\in\\mathcal{G}_n}\n| \\widetilde{f}_b(x,r) - f^{\\text{obs}} | \\]\nRun the batch; update CRNGP.\n\nAdapt\nRefine the candidate grid:\n\\[\\mathcal{G}_n \\longrightarrow \\mathcal{G}_{n+1}\\]\nConcentrate and add candidates near promising regions.\n\n\n\n\n\nWe search for small historical discrepancy D over a finite candidate grid G of input–replicate pairs. D_n denotes the completed simulator evaluations. Thompson sampling draws plausible discrepancy surfaces from the surrogate posterior; a minimizer of each draw proposes a simulation, with duplicate selections handled when forming the batch. After evaluating the batch, update the surrogate and adapt the candidate grid by filtering and densifying promising regions. This combines uncertainty-driven exploration with local refinement under a fixed simulation budget. These posterior draws concern uncertainty in the surrogate discrepancy surface, not posterior samples of calibrated parameters or future outcomes. Detailed grid adaptation is in the backup slides."
+    "text": "Adaptive Grid Thompson Sampling\n\n\n\nChoose the next batch of \\((x,r)\\) pairs; refine where we search.\n\n\n\nSample\n\nFit/update surrogate based on \\(f_n = \\{ f(x_1, r_1), \\ldots, f(x_n, r_n) \\}\\).\nDraw plausible response from the CRNGP posterior at many \\((x_b,r_b)\\):\n\n\\[\\widetilde{f}(x_i,r_i) \\sim p(f\\mid\\mathcal{f}_n)\\]\n\nSelect & simulate\n\nEach draw proposes a promising pair from the grid \\(\\mathcal{G}_n\\). \\[ (x_b,r_b)= \\\\ \\arg\\min_{(x,r)\\in\\mathcal{G}_n}\n| \\widetilde{f}_(x,r) - y_{\\text{obs}} | \\]\nRun new simulation at \\((x_b,r_b)\\)\nUpdate CRNGP surrogate\n\n\nAdapt\n\nRefine the candidate grid:\n\n\\[\\mathcal{G}_n \\longrightarrow \\mathcal{G}_{n+1}\\]\nConcentrate and add candidates near promising regions.\n\n\n\n\n\nWe search for small historical discrepancy D over a finite candidate grid G of input–replicate pairs. D_n denotes the completed simulator evaluations. Thompson sampling draws plausible discrepancy surfaces from the surrogate posterior; a minimizer of each draw proposes a simulation, with duplicate selections handled when forming the batch. After evaluating the batch, update the surrogate and adapt the candidate grid by filtering and densifying promising regions. This combines uncertainty-driven exploration with local refinement under a fixed simulation budget. These posterior draws concern uncertainty in the surrogate discrepancy surface, not posterior samples of calibrated parameters or future outcomes. Detailed grid adaptation is in the backup slides."
   },
   {
     "objectID": "index.html#fixed-grid-thompson-sampling",
     "href": "index.html#fixed-grid-thompson-sampling",
     "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
     "section": "Fixed Grid Thompson Sampling",
-    "text": "Fixed Grid Thompson Sampling\n\n\n\n\nThompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
+    "text": "Fixed Grid Thompson Sampling\n\n\n\n\nFirst 1 iteration rows shown. Thompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
+  },
+  {
+    "objectID": "index.html#fixed-grid-thompson-sampling-1",
+    "href": "index.html#fixed-grid-thompson-sampling-1",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Fixed Grid Thompson Sampling",
+    "text": "Fixed Grid Thompson Sampling\n\n\n\n\nFirst 2 iteration rows shown. Thompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
+  },
+  {
+    "objectID": "index.html#fixed-grid-thompson-sampling-2",
+    "href": "index.html#fixed-grid-thompson-sampling-2",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Fixed Grid Thompson Sampling",
+    "text": "Fixed Grid Thompson Sampling\n\n\n\n\nFirst 3 iteration rows shown. Thompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
+  },
+  {
+    "objectID": "index.html#fixed-grid-thompson-sampling-3",
+    "href": "index.html#fixed-grid-thompson-sampling-3",
+    "title": "Off The Grid: Efficient Trajectory Discovery with Adaptive Batch Sampling",
+    "section": "Fixed Grid Thompson Sampling",
+    "text": "Fixed Grid Thompson Sampling\n\n\n\n\nFirst 4 iteration rows shown. Thompson Sampling iteratively selects \\((x, r)\\) candidates by sampling from the CRNGP posterior and picking the point with lowest predicted discrepancy."
   },
   {
     "objectID": "index.html#adaptive-grid-thompson-sampling-1",
