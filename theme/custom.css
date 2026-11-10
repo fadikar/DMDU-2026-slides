@@ -429,3 +429,19 @@ section[data-state="title-slide"] h1 {
   justify-content: center;
   overflow: hidden;
 }
+
+/* Keep the two-part averaging illustration inside the title and footer margins. */
+.reveal .posterior-cartoon-slide .slide-body {
+  height: auto;
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+.reveal .posterior-cartoon-slide img.posterior-cartoon {
+  display: block;
+  width: 850px !important;
+  height: 460px !important;
+  max-width: 100% !important;
+  object-fit: contain;
+  margin: 0 auto !important;
+}
+.reveal .posterior-cartoon-slide .slide-body p { margin: 0; }

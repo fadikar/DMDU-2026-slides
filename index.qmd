@@ -341,23 +341,25 @@ Mean-based methods [aggregate over randomness]{.hl-red}. A good mean fit does no
 
 
 
-## What Existing Methods Lack
+## What Existing Methods Lack {.posterior-cartoon-slide}
 
 ::: {.slide-body}
-::: {style="font-size:1.15em;margin:15px 0 10px;"}
+::: {style="font-size:1em;margin:0 0 12px;"}
 Mean-based calibration [aggregates over randomness]{.hl-red} before searching.
 :::
 
-![](figures/averaging-cartoon.svg){width="100%" fig-alt="Conceptual cartoon: several differently timed stochastic trajectories enter an averaging funnel. A single mean curve emerges and is compared with observations, hiding which individual realizations match."}
+```{=html}
+<img class="posterior-cartoon" src="figures/averaging-posterior-cartoon.svg" alt="Averaging realizations can distort input inference: an illustrative two-mode posterior is replaced by a narrow shifted approximation.">
+```
 
-::: {style="text-align:center;font-size:1.1em;margin-top:15px;"}
-[A good mean fit]{.hl-blue} does not identify [which realizations fit]{.hl-amber}.
+::: {style="text-align:center;font-size:1em;margin-top:12px;"}
+[Averaging can hide matches]{.hl-blue} and [distort inference on x]{.hl-amber}.
 :::
 
 :::
 
 ::: notes
-This cartoon describes approaches that emulate and calibrate the mean response. At a fixed input, replicates can have different timing and shape. Averaging collapses that variation before the search. A good fit of the mean does not tell us which individual input–replicate pairs reproduce the observed history. The limitation is about the search target, not a claim that every calibration method ignores randomness. ABC can use full trajectories or informative summaries; stochastic likelihood methods can explicitly represent variability. Our aim is to discover compatible realizations directly. The illustration is conceptual; it does not imply that a mean can never be realized.
+This cartoon describes approaches that emulate and calibrate the mean response. At a fixed input, replicates can have different timing and shape. Averaging collapses that variation before the search. A good fit of the mean does not tell us which individual input–replicate pairs reproduce the observed history. The limitation is about the search target, not a claim that every calibration method ignores randomness. ABC can use full trajectories or informative summaries; stochastic likelihood methods can explicitly represent variability. Our aim is to discover compatible realizations directly. The illustration is conceptual; it does not imply that a mean can never be realized. The lower panels illustrate how a mean-only likelihood approximation can shift, narrow, or lose modes in the posterior on x. A replicate-aware likelihood marginalizes over stochastic realizations, p(y_obs | x) = integral p(y_obs | x,r) p(r) dr. Evaluating a likelihood only at the mean response is generally different. Informative or sufficient summaries need not distort inference. These curves are schematic and do not claim that TOO itself produces posterior samples; discovering compatible pairs alone does not determine posterior weights.
 :::
 
 ## Our Contribution {.body-near-title}
@@ -464,7 +466,7 @@ $$\widetilde{f}(x_i,r_i) \sim p(f\mid\mathcal{f}_n)$$
 
 * Each draw proposes a promising pair from the grid $\mathcal{G}_n$.
 $$ (x_b,r_b)= \\ \arg\min_{(x,r)\in\mathcal{G}_n}
-| \widetilde{f}_(x,r) - y_{\text{obs}} | $$
+| \widetilde{f}(x,r) - y_{\text{obs}} | $$
 * Run new simulation at $(x_b,r_b)$ 
 * Update CRNGP surrogate
 :::
