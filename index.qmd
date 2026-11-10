@@ -454,24 +454,25 @@ CRNGP is a Gaussian process surrogate that keeps the replicate identity as an ex
 ::: {.column width="33%"}
 ### Sample {.hl-blue}
 
-Draw plausible discrepancy surfaces from the CRNGP posterior:
+* Fit/update surrogate based on $f_n = \{ f(x_1, r_1), \ldots, f(x_n, r_n) \}$. 
+* Draw plausible response from the CRNGP posterior:
 
-$$\widetilde{D}_b \sim p(D\mid\mathcal{D}_n)$$
+$$\widetilde{f}_b \sim p(f\mid\mathcal{f}_n)$$
 :::
 ::: {.column width="34%"}
 ### Select & simulate {.hl-orange}
 
-Each draw proposes a promising pair:
+* Each draw proposes a promising pair from the grid $\mathcal{G}_n$.
 
-$$ (x_b,r_b)=\arg\min_{(x,r)\in\mathcal{G}_n}
-\widetilde{D}_b(x,r) $$
+$$ (x_b,r_b)= \\ \arg\min_{(x,r)\in\mathcal{G}_n}
+| \widetilde{f}_b(x,r) - f^{\text{obs}} | $$
 
-Run the batch; update CRNGP.
+* Run the batch; update CRNGP.
 :::
 ::: {.column width="33%"}
 ### Adapt {.hl-green}
 
-Refine the candidate grid:
+* Refine the candidate grid:
 
 $$\mathcal{G}_n \longrightarrow \mathcal{G}_{n+1}$$
 

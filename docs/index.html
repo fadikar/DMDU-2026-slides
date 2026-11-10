@@ -1772,13 +1772,16 @@ display:block!important;
 <div class="columns method-panels sampling-panels">
 <div class="column" style="width:33%;">
 <h3 class="hl-blue" id="sample">Sample</h3>
-<p>Draw plausible discrepancy surfaces from the CRNGP posterior:</p>
-<p><span class="math display">\[\widetilde{D}_b \sim p(D\mid\mathcal{D}_n)\]</span></p>
+<ul>
+<li>Fit/update surrogate based on <span class="math inline">\(f_n = \{ f(x_1, r_1), \ldots, f(x_n, r_n) \}\)</span>.</li>
+<li>Draw plausible response from the CRNGP posterior:</li>
+</ul>
+<p><span class="math display">\[\widetilde{f}_b \sim p(f\mid\mathcal{f}_n)\]</span></p>
 </div><div class="column" style="width:34%;">
 <h3 class="hl-orange" id="select-simulate">Select &amp; simulate</h3>
-<p>Each draw proposes a promising pair:</p>
-<p><span class="math display">\[ (x_b,r_b)=\arg\min_{(x,r)\in\mathcal{G}_n}
-\widetilde{D}_b(x,r) \]</span></p>
+<p>Each draw proposes a promising pair from the grid <span class="math inline">\(\mathcal{G}_n\)</span>.</p>
+<p><span class="math display">\[ (x_b,r_b)= \\ \arg\min_{(x,r)\in\mathcal{G}_n}
+| \widetilde{f}_b(x,r) - f^{\text{obs}} | \]</span></p>
 <p>Run the batch; update CRNGP.</p>
 </div><div class="column" style="width:33%;">
 <h3 class="hl-green" id="adapt">Adapt</h3>
